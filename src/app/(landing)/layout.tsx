@@ -1,3 +1,4 @@
+import Footer from '@/app/(landing)/_components/Layouts/Footer';
 import Header from '@/app/(landing)/_components/Layouts/Header';
 import type { Metadata } from 'next';
 import { Poppins } from 'next/font/google';
@@ -21,7 +22,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
       <body className={`${poppins.variable} antialiased`}>
         <Header />
         {children}
-        {/* <Footer /> */}
+        <Footer />
       </body>
     </html>
   );
