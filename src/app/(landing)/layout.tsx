@@ -1,4 +1,4 @@
-import Header from '@/app/(landing)/_components/layouts/Header';
+import Header from '@/app/(landing)/_components/Layouts/Header';
 import type { Metadata } from 'next';
 import { Poppins } from 'next/font/google';
 import '../globals.css';
