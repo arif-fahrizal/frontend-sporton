@@ -31,31 +31,35 @@ const CATEGORIES = [
 
 export default function CategoriesSection() {
   return (
-    <section id="category-section" className="container mx-auto mb-20">
-      <div className="flex justify-between">
-        <h2 className="text-2xl font-bold">Browse By Categories</h2>
-        <Link href="#" className="flex gap-2 text-primary font-medium">
-          <span className="self-center">See All Categories</span>
-          <FiArrowRight className="self-center" />
+    <section id="category-section" className="container mx-auto mb-12 px-4 sm:mb-16 md:mb-20">
+      <div className="flex flex-col justify-between items-start gap-4 mb-6 sm:flex-row sm:items-center md:mb-8">
+        <h2 className="text-xl font-bold sm:text-2xl lg:text-3xl">Browse By Categories</h2>
+        <Link href="#" className="flex items-center gap-2 text-primary font-medium transition-all hover:gap-3">
+          <span className="text-sm sm:text-base">See All Categories</span>
+          <FiArrowRight size={20} />
         </Link>
       </div>
-      <div className="grid grid-cols-6 gap-12 mt-8">
+
+      <div className="grid grid-cols-3 gap-4 sm:grid-cols-6 md:gap-6 lg:gap-8 xl:gap-14">
         {CATEGORIES.map((category, index) => (
-          <div
-            key={`categories-${index}`}
-            className="flex justify-center w-full aspect-square rounded-lg bg-linear-to-r from-[#F1F1F1] to-[#F7F7F7]"
-          >
-            <div className="self-center">
-              <Image
-                src={`/categories/${category.image}`}
-                alt={category.name}
-                width={86}
-                height={86}
-                className="mb-2.5"
-              />
-              <span className="text-xl text-center text-primary font-medium">{category.name}</span>
+          <Link key={`categories-${index}`} href="#" className="group">
+            <div className="flex flex-col justify-center items-center w-full aspect-square p-2 rounded-lg transition-all duration-300 bg-linear-to-br from-[#F1F1F1] to-[#F7F7F7] cursor-pointer hover:shadow-lg hover:scale-105 md:p-3 lg:p-4">
+              <div className="flex flex-col justify-center items-center h-full">
+                <div className="relative w-16 h-16 mb-2 transition-transform duration-300 group-hover:scale-110 sm:w-18 sm:h-18 sm:mb-2.5 lg:w-24 lg:h-24 xl:w-28 xl:h-28">
+                  <Image
+                    src={`/categories/${category.image}`}
+                    alt={category.name}
+                    fill
+                    sizes="(max-width: 640px) 64px, (max-width: 768px) 80px, 86px"
+                    className="object-contain"
+                  />
+                </div>
+                <span className="text-xs text-center text-primary font-medium transition-colors group-hover:text-primary/80 sm:text-sm lg:text-xl">
+                  {category.name}
+                </span>
+              </div>
             </div>
-          </div>
+          </Link>
         ))}
       </div>
     </section>
