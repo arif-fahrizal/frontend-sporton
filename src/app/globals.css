@@ -1,7 +1,7 @@
 @import 'tailwindcss';
 
 @theme inline {
-  --spacing-8xl: 90rem;
+  --breakpoint-xs: 30rem;
 
   --color-primary: #ff5f3f;
   --color-primary-light: #f4ebeb;
