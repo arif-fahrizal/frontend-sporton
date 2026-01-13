@@ -2,27 +2,36 @@ import { NAV_FOOTER, SOCIAL_MEDIA } from '@/utils/navigation.utils';
 import Image from 'next/image';
 import Link from 'next/link';
 
+const date = new Date();
+const currentYear = date.getFullYear();
+
 export default function Footer() {
   return (
-    <footer className="mt-52 text-white bg-dark-alternate">
-      <div className="container flex justify-between mx-auto pt-14 pb-24">
-        <div className="w-105">
-          <Image src="/logo/sporton-logo-light.svg" alt="logo sporton footer" width={187} height={44} />
-          <p className="mt-8">
+    <footer className="mt-52 px-4 text-white bg-dark-alternate">
+      <div className="container flex flex-col gap-10 mx-auto pt-12 pb-23 md:flex-row md:justify-between">
+        <div className="w-full md:max-w-[45ch]">
+          <Image
+            src="/logo/sporton-logo-light.svg"
+            alt="logo sporton footer"
+            width={187}
+            height={44}
+            className="mx-auto md:mx-0"
+          />
+          <p className="mt-8 text-center md:text-left">
             Engineered for endurance and designed for speed. Experience gear that moves as fast as you do.
           </p>
         </div>
-        <div className="grid grid-cols-2 w-105">
-          <div className="flex flex-col gap-7">
-            {NAV_FOOTER.map(item => (
-              <Link key={item.href} href={item.href}>
+        <div className="flex justify-center gap-10 w-full md:w-auto lg:gap-20">
+          <div className="flex flex-col gap-4 md:gap-6 lg:gap-8">
+            {NAV_FOOTER.map((item, index) => (
+              <Link key={`navigation-footer-${index}`} href={item.href}>
                 {item.label}
               </Link>
             ))}
           </div>
-          <div className="flex flex-col gap-7">
-            {SOCIAL_MEDIA.map(item => (
-              <Link key={item.href} href={item.href}>
+          <div className="flex flex-col gap-4 md:gap-6 lg:gap-8">
+            {SOCIAL_MEDIA.map((item, index) => (
+              <Link key={`social-media-${index}`} href={item.href}>
                 {item.label}
               </Link>
             ))}
@@ -30,10 +39,10 @@ export default function Footer() {
         </div>
       </div>
       <div className="border-t border-t-white/15">
-        <div className="container flex justify-between mx-auto py-6.5">
-          <div>SportsOn © 2025 All Rights Reserverd.</div>
+        <div className="container flex flex-col-reverse gap-8 mx-auto py-6.5 text-center sm:flex-row sm:justify-between">
+          <span className="text-sm sm:text-base">SportOn © {currentYear} All Rights Reserverd.</span>
 
-          <div className="grid grid-cols-2 w-105">
+          <div className="flex justify-center items-center gap-10">
             <Link href="#">Privacy Policy</Link>
             <Link href="#">Terms Conditions</Link>
           </div>

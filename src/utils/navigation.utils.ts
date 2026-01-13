@@ -23,7 +23,7 @@ export const NAV_FOOTER = [
     href: '#',
   },
   {
-    label: 'Products',
+    label: 'Explore Products',
     href: '#',
   },
   {
