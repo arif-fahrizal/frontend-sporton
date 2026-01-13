@@ -1,30 +1,77 @@
+'use client';
+
+import useBoolean from '@/hooks/useBoolean.hook';
+import { NAV_HEADER } from '@/utils/navigation.utils';
 import Image from 'next/image';
 import Link from 'next/link';
-import { FiSearch, FiShoppingBag } from 'react-icons/fi';
+import { FiMenu, FiSearch, FiShoppingBag, FiX } from 'react-icons/fi';
 
 export default function Header() {
+  const { value: isMenuOpen, toggle } = useBoolean();
+
   return (
-    <header>
-      <div className="container flex justify-between gap-10 mx-auto py-7">
-        <Image src="/logo/sporton-logo-dark.svg" alt="Sporton Logo" width={127} height={30} />
-        <nav className="flex gap-44 font-medium">
-          <Link
-            href=""
-            className="relative after:content-[''] after:absolute after:block after:w-1/2 after:h-1 after:left-1/2 after:-translate-1/2 after:translate-y-1 after:rounded-full after:bg-primary"
-          >
-            Home
+    <header className="sticky top-0 bg-white z-50">
+      <div className="container mx-auto px-4 py-5 lg:py-7">
+        <div className="flex items-center justify-between gap-4">
+          <Link href="/" className="shrink-0">
+            <Image
+              src="/logo/sporton-logo-dark.svg"
+              alt="Sporton Logo"
+              width={127}
+              height={30}
+              className="w-24 h-auto sm:w-32"
+            />
           </Link>
-          <Link href="">Category</Link>
-          <Link href="">Explore Products</Link>
-        </nav>
-        <div className="flex gap-10">
-          <FiSearch size={24} />
-          <div className="relative">
-            <FiShoppingBag size={24} />
-            <div className="absolute w-3.5 h-3.5 -top-1 -right-1 text-[10px] text-center text-white rounded-full bg-primary">
-              3
-            </div>
+
+          <nav id="desktop-navigation" className="hidden gap-8 font-medium md:flex xl:gap-44">
+            {NAV_HEADER.map((item, index) => (
+              <Link
+                key={`desktop-navigation-${index}`}
+                href={item.href}
+                className={
+                  index === 0
+                    ? "relative after:content-[''] after:absolute after:block after:w-1/2 after:h-1 after:left-1/2 after:-translate-x-1/2 after:translate-y-1 after:rounded-full after:bg-primary hover:text-primary transition-colors"
+                    : ''
+                }
+              >
+                {item.label}
+              </Link>
+            ))}
+          </nav>
+
+          <div className="flex items-center gap-6 lg:gap-10">
+            <button aria-label="Search">
+              <FiSearch size={24} className="w-5.5 h-5.5 md:w-6 md:h-6" />
+            </button>
+            <Link href="/cart" className="relative">
+              <FiShoppingBag size={24} className="w-5 h-5 md:w-6 md:h-6" />
+              <div className="absolute w-3.5 h-3.5 -top-1 -right-1 text-[10px] flex items-center justify-center text-white rounded-full bg-primary">
+                3
+              </div>
+            </Link>
+            <button onClick={toggle} aria-label="Toggle menu" className="md:hidden">
+              {isMenuOpen ? <FiX size={24} /> : <FiMenu size={24} />}
+            </button>
           </div>
+        </div>
+
+        <div
+          className={`container fixed transition-all duration-300 ease-in-out origin-top bg-white lg:hidden ${
+            isMenuOpen ? 'max-h-96 opacity-100 scale-y-100' : 'max-h-0 opacity-0 scale-y-95'
+          }`}
+        >
+          <nav
+            id="mobile-navigation"
+            className={`mt-6 pt-4 pb-4 space-y-4 border-t transform transition-transform duration-300 ${
+              isMenuOpen ? 'translate-y-0' : '-translate-y-2'
+            }`}
+          >
+            {NAV_HEADER.map((item, index) => (
+              <Link key={`mobile-navigation-${index}`} href={item.href} className="block font-medium">
+                {item.label}
+              </Link>
+            ))}
+          </nav>
         </div>
       </div>
     </header>

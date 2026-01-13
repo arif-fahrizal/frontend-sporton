@@ -11,10 +11,16 @@
   --font-poppins: var(--font-poppins);
 }
 
-html {
-  overflow-x: hidden;
-}
+@layer base {
+  * {
+    @apply font-poppins;
+  }
 
-* {
-  @apply font-poppins;
+  html {
+    overflow-x: hidden;
+  }
+
+  button {
+    cursor: pointer;
+  }
 }
