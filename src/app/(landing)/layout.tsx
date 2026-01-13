@@ -14,6 +14,28 @@ export const metadata: Metadata = {
   title: 'Sport On',
   description:
     'Engineered for endurance and designed for speed. Experience gear that moves as fast as you do. Premium fabrics. Unmatched comfort. Limitless motion.',
+  icons: {
+    icon: [
+      {
+        url: '/logo/logo-dark.svg',
+        media: '(prefers-color-scheme: light)',
+      },
+      {
+        url: '/logo/logo-light.svg',
+        media: '(prefers-color-scheme: dark)',
+      },
+    ],
+    apple: [
+      {
+        url: '/logo/logo-dark.svg',
+        media: '(prefers-color-scheme: light)',
+      },
+      {
+        url: '/logo/logo-light.svg',
+        media: '(prefers-color-scheme: dark)',
+      },
+    ],
+  },
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
