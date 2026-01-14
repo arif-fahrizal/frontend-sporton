@@ -23,8 +23,8 @@ export default function Button({
   };
 
   const sizeStyles = {
-    small: 'py-4 px-9',
-    medium: 'py-2.5 px-7',
+    small: 'py-2.5 px-7',
+    medium: 'py-4 px-9',
   };
 
   return (
