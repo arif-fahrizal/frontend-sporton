@@ -53,11 +53,11 @@ const PRODUCTS = [
 
 export default function ProductsSection() {
   return (
-    <section id="products-section" className="container mt-32 mx-auto">
-      <h2 className="mb-11 text-4xl text-center font-bold italic">
+    <section id="products-section" className="container px-4 mt-32 mx-auto">
+      <h2 className="mb-10 text-2xl text-center font-bold italic md:text-3xl lg:text-4xl">
         <span className="text-primary">OUR </span>PRODUCTS
       </h2>
-      <div className="grid grid-cols-4 gap-5">
+      <div className="grid grid-cols-2 gap-2 xs:grid-cols-3 sm:grid-cols-4 md:gap-3.5 2xl:grid-cols-6 xl:gap-5">
         {PRODUCTS.map((product, index) => (
           <CardProduct
             key={`product-${index}`}
