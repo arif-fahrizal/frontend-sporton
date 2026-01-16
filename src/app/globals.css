@@ -29,4 +29,17 @@
     -webkit-appearance: none;
     margin: 0;
   }
+
+  .input-group {
+    @apply mb-5;
+  }
+
+  .input-group label {
+    @apply block mb-1 text-xs;
+  }
+
+  .input-group input,
+  .input-group textarea {
+    @apply w-full py-2.5 px-4 text-sm outline-none bg-gray-100 focus:ring focus:ring-gray-400;
+  }
 }

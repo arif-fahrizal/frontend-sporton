@@ -1,46 +1,16 @@
 import Button from '@/app/(landing)/_components/UI/Button';
+import { CART_LIST, TOTAL_PRICE } from '@/app/(landing)/_components/UI/PopUp/CartPopUp';
 import { formatRupiah } from '@/utils/currency.utils';
 import Image from 'next/image';
-import { FiArrowRight, FiTrash2 } from 'react-icons/fi';
+import { FiCreditCard, FiTrash2 } from 'react-icons/fi';
 
-export const CART_LIST = [
-  {
-    name: 'SportsOn Product 1',
-    category: 'Running',
-    price: 450000,
-    qty: 5,
-    image: 'shoes-white-red.png',
-  },
-  {
-    name: 'SportsOn Product 2',
-    category: 'Tennis',
-    price: 250000,
-    qty: 2,
-    image: 'racket-black.png',
-  },
-  {
-    name: 'SportsOn Product 3',
-    category: 'Clothing',
-    price: 230000,
-    qty: 5,
-    image: 'jersey-red.png',
-  },
-  {
-    name: 'SportsOn Product 4',
-    category: 'Clothing',
-    price: 330000,
-    qty: 5,
-    image: 'jersey-red.png',
-  },
-];
-
-export const TOTAL_PRICE = CART_LIST.reduce((acc, item) => acc + item.price * item.qty, 0);
-
-export default function CartPopUp() {
+export default function CartItems() {
   return (
-    <div className="absolute w-90 top-[150%] right-0 border border-gray-200 bg-white shadow-xl shadow-black/10 z-99">
-      <h2 className="p-4 text-center font-bold border-b border-gray-200">sporton</h2>
-      <div className="max-h-80 overflow-y-auto">
+    <div className="bg-white">
+      <div className="py-4 px-5 border-b border-gray-200">
+        <h2 className="text-lg font-bold">Cart Items</h2>
+      </div>
+      <div className="max-h-75 overflow-y-auto">
         {CART_LIST.map((item, index) => (
           <div key={`cart-item-${index}`} className="flex gap-3 p-4 border-b border-gray-200">
             <div className="flex justify-center items-center w-16 aspect-square bg-primary-light">
@@ -70,8 +40,8 @@ export default function CartPopUp() {
           <span className="text-sm">Total</span>
           <span className="text-xs text-primary">{formatRupiah(TOTAL_PRICE)}</span>
         </div>
-        <Button size="small" variant="dark" className="w-full mt-4">
-          Checkout Now <FiArrowRight />
+        <Button variant="dark" className="w-full mt-4">
+          <FiCreditCard /> Proceed to payment
         </Button>
       </div>
     </div>
