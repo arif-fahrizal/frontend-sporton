@@ -1,9 +1,8 @@
+import CardWithHeader from '@/app/(landing)/_components/UI/Cards/CardWithHeader';
+
 export default function OrderInformation() {
   return (
-    <div className="bg-white">
-      <div className="py-4 px-5 border-b border-gray-200">
-        <h2 className="text-lg font-bold">Order Information</h2>
-      </div>
+    <CardWithHeader title="Order Information">
       <div className="p-5">
         <div className="input-group">
           <label htmlFor="full_name">Full Name</label>
@@ -18,6 +17,6 @@ export default function OrderInformation() {
           <textarea id="shipping_address" rows={5} placeholder="Enter your shipping address" />
         </div>
       </div>
-    </div>
+    </CardWithHeader>
   );
 }
