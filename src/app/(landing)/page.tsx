@@ -4,7 +4,7 @@ import ProductsSection from '@/app/(landing)/_components/Pages/Home/ProductsSect
 
 export default function Home() {
   return (
-    <main>
+    <main className="mb-52">
       <HeroSection />
       <CategoriesSection />
       <ProductsSection />
