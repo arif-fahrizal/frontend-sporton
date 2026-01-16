@@ -1,6 +1,6 @@
 'use client';
 
-import useBoolean from '@/hooks/useBoolean.hook';
+import useBoolean from '@/hooks/useBoolean';
 import { NAV_HEADER } from '@/utils/navigation.utils';
 import Image from 'next/image';
 import Link from 'next/link';

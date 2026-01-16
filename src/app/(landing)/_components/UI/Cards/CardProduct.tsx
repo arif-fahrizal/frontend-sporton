@@ -1,4 +1,5 @@
 import Button from '@/app/(landing)/_components/UI/Button';
+import { formatRupiah } from '@/utils/currency.utils';
 import Image from 'next/image';
 import Link from 'next/link';
 import { FiPlus } from 'react-icons/fi';
@@ -9,13 +10,6 @@ interface TCardProductProps {
   category: string;
   price: number;
 }
-
-const formatRupiah = (value: number) =>
-  new Intl.NumberFormat('id-ID', {
-    style: 'currency',
-    currency: 'IDR',
-    maximumSignificantDigits: 3,
-  }).format(value);
 
 export default function CardProduct({ name, category, price, image }: Readonly<TCardProductProps>) {
   return (
