@@ -8,9 +8,9 @@ export default function OrderStatusPage() {
   const isConfirmed = useBoolean();
 
   return (
-    <main className="min-h-[80vh] bg-gray-100">
-      <div className="max-w-5xl mx-auto py-20">
-        <h1 className="text-5xl text-center font-bold">Order Status</h1>
+    <main className="min-h-[80vh] px-4 bg-gray-100">
+      <div className="max-w-5xl mx-auto py-12">
+        <h1 className="text-4xl text-center font-bold sm:text-5xl">Order Status</h1>
       </div>
       {isConfirmed.value ? <OrderConfirmed /> : <OrderSubmitted />}
     </main>
