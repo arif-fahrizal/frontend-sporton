@@ -41,19 +41,17 @@ export default function Header() {
             ))}
           </nav>
 
-          <div className="flex items-center gap-6 lg:gap-10">
+          <div className="relative flex items-center gap-6 lg:gap-10">
             <button aria-label="Search">
               <FiSearch size={24} className="w-5.5 h-5.5 md:w-6 md:h-6" />
             </button>
-            <div className="relative">
-              <button onClick={isCartOpen.toggle}>
-                <FiShoppingBag size={24} className="w-5 h-5 md:w-6 md:h-6" />
-                <span className="absolute w-3.5 h-3.5 -top-1 -right-1 text-[10px] flex items-center justify-center text-white rounded-full bg-primary">
-                  3
-                </span>
-              </button>
-              {isCartOpen.value && <CartPopUp />}
-            </div>
+            <button onClick={isCartOpen.toggle} className="relative">
+              <FiShoppingBag size={24} className="w-5 h-5 md:w-6 md:h-6" />
+              <span className="absolute w-3.5 h-3.5 -top-1 -right-1 text-[10px] flex items-center justify-center text-white rounded-full bg-primary">
+                3
+              </span>
+            </button>
+            {isCartOpen.value && <CartPopUp />}
             <button onClick={isMenuOpen.toggle} aria-label="Toggle menu" className="md:hidden">
               {isMenuOpen.value ? <FiX size={24} /> : <FiMenu size={24} />}
             </button>

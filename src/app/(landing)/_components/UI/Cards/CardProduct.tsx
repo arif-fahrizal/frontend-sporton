@@ -5,15 +5,16 @@ import Link from 'next/link';
 import { FiPlus } from 'react-icons/fi';
 
 interface TCardProductProps {
+  href?: string;
   name: string;
   image: string;
   category: string;
   price: number;
 }
 
-export default function CardProduct({ name, category, price, image }: Readonly<TCardProductProps>) {
+export default function CardProduct({ href = '#', name, category, price, image }: Readonly<TCardProductProps>) {
   return (
-    <Link href="#" className="p-1.5 duration-300 bg-white hover:drop-shadow-xl">
+    <Link href={href} className="p-1.5 duration-300 bg-white hover:drop-shadow-xl">
       <div className="relative flex justify-center items-center w-full aspect-square bg-primary-light">
         <Image src={image} alt={name} width={300} height={300} className="aspect-square object-contain" />
         <Button className="absolute size-6 top-2.5 right-2.5 p-1! sm:size-8 lg:size-10">

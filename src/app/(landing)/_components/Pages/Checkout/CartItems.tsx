@@ -1,11 +1,17 @@
+'use client';
+
 import Button from '@/app/(landing)/_components/UI/Button';
 import CardWithHeader from '@/app/(landing)/_components/UI/Cards/CardWithHeader';
 import { CART_LIST, TOTAL_PRICE } from '@/app/(landing)/_components/UI/PopUp/CartPopUp';
 import { formatRupiah } from '@/utils/currency.utils';
 import Image from 'next/image';
+import { useRouter } from 'next/navigation';
 import { FiCreditCard, FiTrash2 } from 'react-icons/fi';
 
 export default function CartItems() {
+  const { push } = useRouter();
+
+  const handlePayment = () => push('/payments');
   return (
     <CardWithHeader title="Cart Items">
       <div className="max-h-75 overflow-y-auto">
@@ -38,7 +44,7 @@ export default function CartItems() {
           <span className="text-sm">Total</span>
           <span className="text-xs text-primary">{formatRupiah(TOTAL_PRICE)}</span>
         </div>
-        <Button variant="dark" className="w-full mt-4">
+        <Button variant="dark" className="w-full mt-4" onClick={handlePayment}>
           <FiCreditCard /> Proceed to payment
         </Button>
       </div>

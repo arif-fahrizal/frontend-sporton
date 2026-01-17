@@ -1,11 +1,18 @@
+'use client';
+
 import Button from '@/app/(landing)/_components/UI/Button';
 import CardWithHeader from '@/app/(landing)/_components/UI/Cards/CardWithHeader';
 import FileUpload from '@/app/(landing)/_components/UI/Inputs/FileUpload';
 import { TOTAL_PRICE } from '@/app/(landing)/_components/UI/PopUp/CartPopUp';
 import { formatRupiah } from '@/utils/currency.utils';
+import { useRouter } from 'next/navigation';
 import { FiCheckCircle } from 'react-icons/fi';
 
 export default function PaymentSteps() {
+  const { push } = useRouter();
+
+  const handleConfirmPayment = () => push('/order-status/121241');
+
   return (
     <CardWithHeader title="Payment Steps">
       <div className="p-4">
@@ -30,7 +37,7 @@ export default function PaymentSteps() {
           <span className="text-sm">Total</span>
           <span className="text-xs text-primary">{formatRupiah(TOTAL_PRICE)}</span>
         </div>
-        <Button variant="dark" className="w-full mt-4">
+        <Button variant="dark" className="w-full mt-4" onClick={handleConfirmPayment}>
           <FiCheckCircle /> Upload Receipt & Confirm
         </Button>
       </div>

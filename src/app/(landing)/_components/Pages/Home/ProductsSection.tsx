@@ -61,6 +61,7 @@ export default function ProductsSection() {
         {PRODUCTS.map((product, index) => (
           <CardProduct
             key={`product-${index}`}
+            href={`/product/${product.name}`}
             name={product.name}
             image={`/products/${product.image}`}
             category={product.category}

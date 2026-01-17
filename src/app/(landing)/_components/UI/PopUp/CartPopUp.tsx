@@ -1,6 +1,7 @@
 import Button from '@/app/(landing)/_components/UI/Button';
 import { formatRupiah } from '@/utils/currency.utils';
 import Image from 'next/image';
+import { useRouter } from 'next/navigation';
 import { FiArrowRight, FiTrash2 } from 'react-icons/fi';
 
 export const CART_LIST = [
@@ -37,8 +38,12 @@ export const CART_LIST = [
 export const TOTAL_PRICE = CART_LIST.reduce((acc, item) => acc + item.price * item.qty, 0);
 
 export default function CartPopUp() {
+  const { push } = useRouter();
+
+  const handleCheckout = () => push('/checkouts');
+
   return (
-    <div className="absolute w-90 top-[150%] right-0 border border-gray-200 bg-white shadow-xl shadow-black/10 z-99">
+    <div className="absolute w-72 top-[150%] right-0 border border-gray-200 bg-white shadow-xl shadow-black/10 z-99 sm:w-96">
       <h2 className="p-4 text-center font-bold border-b border-gray-200">sporton</h2>
       <div className="max-h-80 overflow-y-auto">
         {CART_LIST.map((item, index) => (
@@ -70,7 +75,7 @@ export default function CartPopUp() {
           <span className="text-sm">Total</span>
           <span className="text-xs text-primary">{formatRupiah(TOTAL_PRICE)}</span>
         </div>
-        <Button size="small" variant="dark" className="w-full mt-4">
+        <Button size="small" variant="dark" className="w-full mt-4" onClick={handleCheckout}>
           Checkout Now <FiArrowRight />
         </Button>
       </div>
