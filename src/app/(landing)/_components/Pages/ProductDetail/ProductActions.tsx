@@ -1,16 +1,29 @@
 'use client';
 
 import Button from '@/app/(landing)/_components/UI/Button';
+import { useCartStore } from '@/hooks/useCartStore';
+import { Product } from '@/types/products.type';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 import { FiArrowRight, FiChevronDown, FiChevronUp, FiShoppingBag } from 'react-icons/fi';
 
-export default function ProductActions() {
+interface TProductActionsProps {
+  product: Product;
+}
+
+export default function ProductActions({ product }: Readonly<TProductActionsProps>) {
   const { push } = useRouter();
+  const { addItem } = useCartStore();
+
   const [qty, setQty] = useState<number>(1);
 
-  const handleAddQty = () => setQty(prev => prev + 1);
+  const handleAddQty = () => setQty(prev => (prev === product.stock ? prev : prev + 1));
   const handleSubQty = () => setQty(prev => Math.max(prev - 1, 1));
+  const handleAddToCart = (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault();
+    e.stopPropagation();
+    addItem(product, qty);
+  };
 
   return (
     <div className="grid grid-cols-[5rem_1fr] gap-2.5 lg:flex lg:gap-5">
@@ -42,7 +55,7 @@ export default function ProductActions() {
           </button>
         </div>
       </div>
-      <Button className="w-full h-full py-2.5! lg:py-4! lg:px-5 2xl:px-20">
+      <Button onClick={e => handleAddToCart(e)} className="w-full h-full py-2.5! lg:py-4! lg:px-5 2xl:px-20">
         <FiShoppingBag size={24} />
         <span>Add to Cart</span>
       </Button>

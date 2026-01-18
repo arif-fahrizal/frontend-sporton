@@ -2,12 +2,14 @@
 
 import CartPopUp from '@/app/(landing)/_components/UI/PopUp/CartPopUp';
 import useBoolean from '@/hooks/useBoolean';
+import { useCartStore } from '@/hooks/useCartStore';
 import { NAV_HEADER } from '@/utils/navigation.utils';
 import Image from 'next/image';
 import Link from 'next/link';
 import { FiMenu, FiSearch, FiShoppingBag, FiX } from 'react-icons/fi';
 
 export default function Header() {
+  const { items } = useCartStore();
   const isMenuOpen = useBoolean();
   const isCartOpen = useBoolean();
 
@@ -48,7 +50,7 @@ export default function Header() {
             <button onClick={isCartOpen.toggle} className="relative">
               <FiShoppingBag size={24} className="w-5 h-5 md:w-6 md:h-6" />
               <span className="absolute w-3.5 h-3.5 -top-1 -right-1 text-[10px] flex items-center justify-center text-white rounded-full bg-primary">
-                3
+                {items.length}
               </span>
             </button>
             {isCartOpen.value && <CartPopUp />}
