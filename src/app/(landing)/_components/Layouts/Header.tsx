@@ -14,7 +14,7 @@ export default function Header() {
   const isCartOpen = useBoolean();
 
   return (
-    <header className="sticky top-0 bg-white z-50">
+    <header className="sticky top-0 backdrop-blur-xl bg-white/50 z-50">
       <div className="container mx-auto px-4 py-5 lg:py-7">
         <div className="flex items-center justify-between gap-4">
           <Link href="/" className="shrink-0">
@@ -49,9 +49,11 @@ export default function Header() {
             </button>
             <button onClick={isCartOpen.toggle} className="relative">
               <FiShoppingBag size={24} className="w-5 h-5 md:w-6 md:h-6" />
-              <span className="absolute w-3.5 h-3.5 -top-1 -right-1 text-[10px] flex items-center justify-center text-white rounded-full bg-primary">
-                {items.length}
-              </span>
+              {items.length > 0 && (
+                <span className="absolute w-3.5 h-3.5 -top-1 -right-1 text-[10px] flex items-center justify-center text-white rounded-full bg-primary">
+                  {items.length}
+                </span>
+              )}
             </button>
             {isCartOpen.value && <CartPopUp />}
             <button onClick={isMenuOpen.toggle} aria-label="Toggle menu" className="md:hidden">

@@ -13,7 +13,7 @@ interface TProductActionsProps {
 
 export default function ProductActions({ product }: Readonly<TProductActionsProps>) {
   const { push } = useRouter();
-  const { addItem } = useCartStore();
+  const { addItem, items } = useCartStore();
 
   const [qty, setQty] = useState<number>(1);
 
@@ -22,7 +22,12 @@ export default function ProductActions({ product }: Readonly<TProductActionsProp
   const handleAddToCart = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
     e.stopPropagation();
-    addItem(product, qty);
+
+    const currentCartQty = items.find(item => item._id === product._id)?.qty || 0;
+    const availableStock = product.stock - currentCartQty;
+    const qtyToAdd = Math.min(qty, availableStock);
+
+    addItem(product, qtyToAdd);
   };
 
   return (

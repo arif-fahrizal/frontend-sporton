@@ -48,36 +48,40 @@ export default function CartPopUp() {
 
   return (
     <div className="absolute w-72 top-[150%] right-0 border border-gray-200 bg-white shadow-xl shadow-black/10 z-99 sm:w-96">
-      <h2 className="p-4 text-center font-bold border-b border-gray-200">sporton</h2>
+      <h2 className="p-4 text-center font-bold border-b border-gray-200">Shopping Cart</h2>
       <div className="max-h-80 overflow-y-auto">
-        {items.map((product, index) => (
-          <div key={`cart-item-${index}`} className="flex gap-3 p-4 border-b border-gray-200">
-            <div className="flex justify-center items-center w-16 aspect-square bg-primary-light">
-              <Image
-                src={getImageUrl(product.imageUrl)}
-                alt={product.name}
-                width={63}
-                height={63}
-                className="aspect-square object-contain"
-              />
-            </div>
-            <div className="self-center">
-              <span className="text-sm font-medium">{product.name}</span>
-              <div className="flex gap-3 text-xs font-medium">
-                <span>{product.qty}x</span>
-                <span className="text-primary">{formatRupiah(product.price)}</span>
+        {items.length ? (
+          items.map((product, index) => (
+            <div key={`cart-item-${index}`} className="flex gap-3 p-4 border-b border-gray-200">
+              <div className="flex justify-center items-center w-16 aspect-square bg-primary-light">
+                <Image
+                  src={getImageUrl(product.imageUrl)}
+                  alt={product.name}
+                  width={63}
+                  height={63}
+                  className="aspect-square object-contain"
+                />
               </div>
+              <div className="self-center">
+                <span className="text-sm font-medium">{product.name}</span>
+                <div className="flex gap-3 text-xs font-medium">
+                  <span>{product.qty}x</span>
+                  <span className="text-primary">{formatRupiah(product.price)}</span>
+                </div>
+              </div>
+              <Button
+                size="small"
+                variant="ghost"
+                onClick={() => removeItem(product._id)}
+                className="self-center w-7 h-7 ml-auto p-0!"
+              >
+                <FiTrash2 />
+              </Button>
             </div>
-            <Button
-              size="small"
-              variant="ghost"
-              onClick={() => removeItem(product._id)}
-              className="self-center w-7 h-7 ml-auto p-0!"
-            >
-              <FiTrash2 />
-            </Button>
-          </div>
-        ))}
+          ))
+        ) : (
+          <p className="py-5 text-center opacity-50">Your cart is empty</p>
+        )}
       </div>
       <div className="p-4 border-t border-gray-200">
         <div className="flex justify-between font-semibold">

@@ -3,13 +3,17 @@
 import Button from '@/app/(landing)/_components/UI/Button';
 import CardWithHeader from '@/app/(landing)/_components/UI/Cards/CardWithHeader';
 import FileUpload from '@/app/(landing)/_components/UI/Inputs/FileUpload';
-import { TOTAL_PRICE } from '@/app/(landing)/_components/UI/PopUp/CartPopUp';
+import { useCartStore } from '@/hooks/useCartStore';
 import { formatRupiah } from '@/utils/currency.utils';
 import { useRouter } from 'next/navigation';
 import { FiCheckCircle } from 'react-icons/fi';
 
 export default function PaymentSteps() {
   const { push } = useRouter();
+
+  const { items } = useCartStore();
+
+  const TOTAL_PRICE = items.reduce((acc, item) => acc + item.price * item.qty, 0);
 
   const handleConfirmPayment = () => push('/order-status/121241');
 
