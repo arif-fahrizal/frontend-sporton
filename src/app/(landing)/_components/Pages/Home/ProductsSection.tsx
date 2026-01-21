@@ -1,7 +1,7 @@
 'use client';
 
 import CardProduct from '@/app/(landing)/_components/UI/Cards/CardProduct';
-import { Product } from '@/types/products.type';
+import { Product } from '@/types/products.types';
 
 interface TProductsSectionProps {
   products: Product[];

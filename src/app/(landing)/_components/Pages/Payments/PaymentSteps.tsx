@@ -4,18 +4,49 @@ import Button from '@/app/(landing)/_components/UI/Button';
 import CardWithHeader from '@/app/(landing)/_components/UI/Cards/CardWithHeader';
 import FileUpload from '@/app/(landing)/_components/UI/Inputs/FileUpload';
 import { useCartStore } from '@/hooks/useCartStore';
+import { transactionCheckout } from '@/services/transaction.service';
 import { formatRupiah } from '@/utils/currency.utils';
 import { useRouter } from 'next/navigation';
+import { useState } from 'react';
 import { FiCheckCircle } from 'react-icons/fi';
 
 export default function PaymentSteps() {
   const { push } = useRouter();
 
-  const { items } = useCartStore();
+  const [imageFile, setImageFile] = useState<File | null>();
+
+  const { items, customerInfo, reset } = useCartStore();
 
   const TOTAL_PRICE = items.reduce((acc, item) => acc + item.price * item.qty, 0);
 
-  const handleConfirmPayment = () => push('/order-status/121241');
+  const handleConfirmPayment = async () => {
+    if (!imageFile) return alert('Please upload your payment receipt');
+
+    if (!customerInfo) {
+      alert('Please fill out your customer information');
+      return push('/checkout');
+    }
+
+    try {
+      const formData = new FormData();
+
+      formData.append('customerName', customerInfo.customerName);
+      formData.append('customerContact', String(customerInfo.customerContact));
+      formData.append('customerAddress', customerInfo.customerAddress);
+      formData.append('image', imageFile);
+      formData.append('purchasedItems', JSON.stringify(items.map(item => ({ productId: item._id, qty: item.qty }))));
+      formData.append('totalPayment', String(TOTAL_PRICE));
+
+      const res = await transactionCheckout(formData);
+
+      alert('Transaction Created Successfully');
+      reset();
+
+      push(`/order-status/${res._id}`);
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
   return (
     <CardWithHeader title="Payment Steps">
@@ -34,7 +65,7 @@ export default function PaymentSteps() {
             validate your transaction.
           </li>
         </ol>
-        <FileUpload />
+        <FileUpload onFileSelect={setImageFile} />
       </div>
       <div className="p-4 border-t border-gray-200">
         <div className="flex justify-between font-semibold">

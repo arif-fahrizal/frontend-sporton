@@ -1,5 +1,5 @@
 import { getImageUrl } from '@/lib/api';
-import { Category } from '@/types/categories.type';
+import { Category } from '@/types/categories.types';
 import Image from 'next/image';
 import Link from 'next/link';
 import { FiArrowRight } from 'react-icons/fi';

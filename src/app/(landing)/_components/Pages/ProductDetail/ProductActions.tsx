@@ -2,7 +2,7 @@
 
 import Button from '@/app/(landing)/_components/UI/Button';
 import { useCartStore } from '@/hooks/useCartStore';
-import { Product } from '@/types/products.type';
+import { Product } from '@/types/products.types';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 import { FiArrowRight, FiChevronDown, FiChevronUp, FiShoppingBag } from 'react-icons/fi';

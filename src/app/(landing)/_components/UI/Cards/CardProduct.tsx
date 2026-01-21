@@ -3,7 +3,7 @@
 import Button from '@/app/(landing)/_components/UI/Button';
 import { useCartStore } from '@/hooks/useCartStore';
 import { getImageUrl } from '@/lib/api';
-import { Product } from '@/types/products.type';
+import { Product } from '@/types/products.types';
 import { formatRupiah } from '@/utils/currency.utils';
 import Image from 'next/image';
 import Link from 'next/link';

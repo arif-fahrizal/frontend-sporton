@@ -1,4 +1,4 @@
-import { Product } from '@/types/products.type';
+import { Product } from '@/types/products.types';
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
 
@@ -42,7 +42,7 @@ export const useCartStore = create<CartStore>()(
       removeItem: productId => {
         set({ items: get().items.filter(item => item._id !== productId) });
       },
-      reset: () => set({ items: [] }),
+      reset: () => set({ items: [], customerInfo: null }),
     }),
     {
       name: 'cart-storage',
