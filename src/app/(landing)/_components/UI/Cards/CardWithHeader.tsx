@@ -3,7 +3,7 @@ interface TCardWithHeaderProps {
   children: React.ReactNode;
 }
 
-export default function CardWithHeader({ title, children }: Readonly<TCardWithHeaderProps>) {
+export default function CardWithHeader({ title, children }: TCardWithHeaderProps) {
   return (
     <div className="bg-white">
       <div className="py-4 px-5 border-b border-gray-200">

@@ -4,38 +4,11 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { FiArrowRight } from 'react-icons/fi';
 
-// const CATEGORIES = [
-//   {
-//     name: 'Running',
-//     image: 'category-running.png',
-//   },
-//   {
-//     name: 'Tennis',
-//     image: 'category-tennis.png',
-//   },
-//   {
-//     name: 'Basketball',
-//     image: 'category-basketball.png',
-//   },
-//   {
-//     name: 'Football',
-//     image: 'category-football.png',
-//   },
-//   {
-//     name: 'Badminton',
-//     image: 'category-badminton.png',
-//   },
-//   {
-//     name: 'Swimming',
-//     image: 'category-swimming.png',
-//   },
-// ];
-
 interface TCategoriesSectionProps {
   categories: Category[];
 }
 
-export default function CategoriesSection({ categories }: Readonly<TCategoriesSectionProps>) {
+export default function CategoriesSection({ categories }: TCategoriesSectionProps) {
   return (
     <section id="category-section" className="container mx-auto mb-12 px-4 sm:mb-16 md:mb-20">
       <div className="flex flex-col justify-between items-start gap-4 mb-6 sm:flex-row sm:items-center md:mb-8">

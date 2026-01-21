@@ -8,7 +8,7 @@ interface TProductDetailPageProps {
   params: Promise<{ id: string }>;
 }
 
-export default async function ProductDetailPage({ params }: Readonly<TProductDetailPageProps>) {
+export default async function ProductDetailPage({ params }: TProductDetailPageProps) {
   const { id } = await params;
   const product = await getProductById(id);
 

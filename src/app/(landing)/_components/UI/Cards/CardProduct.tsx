@@ -14,7 +14,7 @@ interface TCardProductProps {
   product: Product;
 }
 
-export default function CardProduct({ href = '#', product }: Readonly<TCardProductProps>) {
+export default function CardProduct({ href = '#', product }: TCardProductProps) {
   const { name, imageUrl, category, price } = product;
 
   const { addItem } = useCartStore();

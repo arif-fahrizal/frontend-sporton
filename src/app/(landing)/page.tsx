@@ -5,13 +5,13 @@ import { getAllCategories } from '@/services/category.service';
 import { getAllProducts } from '@/services/product.service';
 
 export default async function Home() {
-  const [categories, products] = await Promise.allSettled([getAllCategories(), getAllProducts()]);
+  const [categories, products] = await Promise.all([getAllCategories(), getAllProducts()]);
 
   return (
     <main className="mb-52 overflow-x-hidden">
       <HeroSection />
-      <CategoriesSection categories={categories.status === 'fulfilled' ? categories.value : []} />
-      <ProductsSection products={products.status === 'fulfilled' ? products.value : []} />
+      <CategoriesSection categories={categories} />
+      <ProductsSection products={products} />
     </main>
   );
 }

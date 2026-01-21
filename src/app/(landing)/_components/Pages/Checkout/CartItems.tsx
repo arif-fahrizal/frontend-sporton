@@ -12,7 +12,7 @@ interface TCartItemProps {
   onPayment: () => void;
 }
 
-export default function CartItems({ onPayment }: Readonly<TCartItemProps>) {
+export default function CartItems({ onPayment }: TCartItemProps) {
   const { items, removeItem } = useCartStore();
 
   const TOTAL_PRICE = items.reduce((acc, item) => acc + item.price * item.qty, 0);

@@ -7,7 +7,7 @@ interface TProductsSectionProps {
   products: Product[];
 }
 
-export default function ProductsSection({ products }: Readonly<TProductsSectionProps>) {
+export default function ProductsSection({ products }: TProductsSectionProps) {
   return (
     <section id="products-section" className="container px-4 mt-32 mx-auto">
       <h2 className="mb-10 text-2xl text-center font-bold italic md:text-3xl lg:text-4xl">

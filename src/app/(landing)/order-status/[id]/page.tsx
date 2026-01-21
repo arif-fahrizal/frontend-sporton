@@ -10,7 +10,7 @@ const ORDER_STATUS = {
   paid: <OrderConfirmed />,
 };
 
-export default async function OrderStatusPage({ params }: Readonly<ParamsProps>) {
+export default async function OrderStatusPage({ params }: ParamsProps) {
   const { id } = await params;
   const transaction = await getTransactionById(id);
 

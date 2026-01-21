@@ -11,7 +11,7 @@ interface TProductActionsProps {
   product: Product;
 }
 
-export default function ProductActions({ product }: Readonly<TProductActionsProps>) {
+export default function ProductActions({ product }: TProductActionsProps) {
   const { push } = useRouter();
   const { addItem, items } = useCartStore();
 
