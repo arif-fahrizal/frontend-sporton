@@ -1,6 +1,6 @@
 import ProductActions from '@/app/(landing)/_components/Pages/ProductDetail/ProductActions';
 import { getImageUrl } from '@/lib/api';
-import { getSingleProduct } from '@/services/product.service';
+import { getProductById } from '@/services/product.service';
 import { formatRupiah } from '@/utils/currency.utils';
 import Image from 'next/image';
 
@@ -10,7 +10,7 @@ interface TProductDetailPageProps {
 
 export default async function ProductDetailPage({ params }: Readonly<TProductDetailPageProps>) {
   const { id } = await params;
-  const product = await getSingleProduct(id);
+  const product = await getProductById(id);
 
   return (
     <main className="container grid gap-10 mx-auto py-20 px-4 md:grid-cols-[20rem_1fr] lg:py-40 lg:grid-cols-[27.5rem_1fr] xl:grid-cols-[33.5rem_1fr] xl:gap-12 2xl:grid-cols-[40rem_1fr]">
