@@ -21,10 +21,8 @@ export default function ImageUploadPreview({ label, value, onChange, className }
   };
 
   return (
-    <div className={className}>
-      <label htmlFor={label} className="input-group-admin">
-        {label}
-      </label>
+    <div className={`input-group-admin ${className}`}>
+      <label htmlFor={label}>{label}</label>
       <div
         onClick={handleFileImageClick}
         className="flex flex-col justify-center items-center w-50 aspect-square rounded-lg border-2 border-dashed border-primary bg-primary/5 overflow-hidden"
