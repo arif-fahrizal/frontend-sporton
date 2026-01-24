@@ -1,4 +1,4 @@
-import Sidebar from '@/app/(dashboard)/_components/layouts/Sidebar';
+import Sidebar from '@/app/(dashboard)/_components/layouts-sss/Sidebar';
 import type { Metadata } from 'next';
 import { Poppins } from 'next/font/google';
 import '../globals.css';
