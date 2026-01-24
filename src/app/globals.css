@@ -44,7 +44,7 @@
   }
 
   .input-group-admin label {
-    @apply block mb-1 text-xs;
+    @apply block mb-2 text-xs font-medium;
   }
 
   .input-group-admin input,

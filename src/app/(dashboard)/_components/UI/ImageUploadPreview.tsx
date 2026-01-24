@@ -22,6 +22,9 @@ export default function ImageUploadPreview({ label, value, onChange, className }
 
   return (
     <div className={className}>
+      <label htmlFor={label} className="input-group-admin">
+        {label}
+      </label>
       <div
         onClick={handleFileImageClick}
         className="flex flex-col justify-center items-center w-50 aspect-square rounded-lg border-2 border-dashed border-primary bg-primary/5 overflow-hidden"
@@ -31,10 +34,10 @@ export default function ImageUploadPreview({ label, value, onChange, className }
         ) : (
           <>
             <FiUploadCloud size={24} className="text-primary" />
-            <span className="text-sm font-medium">{label || 'Click to upload'}</span>
+            <span className="text-sm font-medium">Click to upload</span>
           </>
         )}
-        <input ref={fileInputRef} type="file" accept="image/*" onChange={handleFileChange} hidden />
+        <input ref={fileInputRef} type="file" id={label} accept="image/*" onChange={handleFileChange} hidden />
       </div>
     </div>
   );
