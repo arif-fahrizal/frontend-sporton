@@ -18,7 +18,7 @@ export const NAV_ADMIN = [
   },
   {
     label: 'Bank Information',
-    href: '/admin/bank-information',
+    href: '/admin/bank-informations',
     icon: FiCreditCard,
   },
 ];
