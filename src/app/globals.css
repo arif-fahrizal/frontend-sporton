@@ -40,6 +40,16 @@
 
   .input-group input,
   .input-group textarea {
-    @apply w-full py-2.5 px-4 text-sm outline-none bg-gray-100 focus:ring focus:ring-gray-400;
+    @apply w-full py-2.5 px-4 text-sm outline-none duration-300 bg-gray-100 focus:ring focus:ring-gray-400;
+  }
+
+  .input-group-admin label {
+    @apply block mb-1 text-xs;
+  }
+
+  .input-group-admin input,
+  .input-group-admin textarea,
+  .input-group-admin select {
+    @apply w-full py-2.5 px-4 text-sm rounded-md ring ring-gray-300 outline-none duration-300 focus:ring-gray-500;
   }
 }
