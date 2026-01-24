@@ -1,3 +1,28 @@
+import { FiBox, FiCreditCard, FiLayers, FiShoppingCart } from 'react-icons/fi';
+
+export const NAV_ADMIN = [
+  {
+    label: 'Products',
+    href: '/admin/products',
+    icon: FiBox,
+  },
+  {
+    label: 'Categories',
+    href: '/admin/categories',
+    icon: FiLayers,
+  },
+  {
+    label: 'Transactions',
+    href: '/admin/transactions',
+    icon: FiShoppingCart,
+  },
+  {
+    label: 'Bank Information',
+    href: '/admin/bank-information',
+    icon: FiCreditCard,
+  },
+];
+
 export const NAV_HEADER = [
   {
     label: 'Home',
