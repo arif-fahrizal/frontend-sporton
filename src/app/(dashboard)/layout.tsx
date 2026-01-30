@@ -1,6 +1,8 @@
 import Sidebar from '@/app/(dashboard)/_components/Layouts/Sidebar';
 import type { Metadata } from 'next';
 import { Poppins } from 'next/font/google';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import '../globals.css';
 
 const poppins = Poppins({
@@ -44,6 +46,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
           <Sidebar />
           <main className="flex-1 min-h-dvh ml-80 p-14 bg-[#F7F9FA]">{children}</main>
         </div>
+        <ToastContainer position="bottom-right" />
       </body>
     </html>
   );

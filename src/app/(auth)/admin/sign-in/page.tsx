@@ -32,7 +32,6 @@ export default function SignInPage() {
       }
     } catch (error) {
       if (error instanceof Error) setErrorMessage(error.message || 'Something went wrong. Please try again.');
-      // setErrorMessage(error?.message);
       console.error(error);
     } finally {
       setIsLoading(false);

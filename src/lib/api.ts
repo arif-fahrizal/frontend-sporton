@@ -1,3 +1,5 @@
+import { getCookies } from '@/services/auth.service';
+
 export async function fetchAPI<T>(endpoint: string, options?: RequestInit): Promise<T> {
   const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}${endpoint}`, {
     ...options,
@@ -17,6 +19,12 @@ export async function fetchAPI<T>(endpoint: string, options?: RequestInit): Prom
   }
 
   return res.json();
+}
+
+export async function getAuthHeaders() {
+  const { token } = await getCookies();
+
+  return { Authorization: `Bearer ${token}` };
 }
 
 export function getImageUrl(path: string) {
