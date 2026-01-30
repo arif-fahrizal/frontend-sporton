@@ -1,13 +1,20 @@
 'use client';
 
+import { Logout } from '@/services/auth.service';
 import { NAV_ADMIN } from '@/utils/navigation.utils';
 import Image from 'next/image';
 import Link from 'next/link';
-import { usePathname } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 import { FiLogOut } from 'react-icons/fi';
 
 export default function Sidebar() {
   const pathname = usePathname();
+  const { push } = useRouter();
+
+  const handleLogout = () => {
+    Logout();
+    push('/admin/sign-in');
+  };
   return (
     <aside className="fixed flex flex-col min-h-dvh w-80 top-0 left-0 border-r border-gray-100 bg-white">
       <div className="py-8 px-14 border-b border-gray-200">
@@ -28,13 +35,14 @@ export default function Sidebar() {
           );
         })}
       </div>
-      <Link
-        href="#"
+      <button
+        type="button"
+        onClick={handleLogout}
         className="flex items-center gap-3 mt-auto mx-5 mb-5 py-2 px-4.5 font-medium rounded-lg duration-300 hover:bg-gray-100"
       >
         <FiLogOut size={24} />
         <span className="text-sm font-medium">Logout</span>
-      </Link>
+      </button>
     </aside>
   );
 }
