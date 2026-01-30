@@ -52,6 +52,11 @@ export default function ProductModal({ product, isOpen, onClose, onSuccess }: TP
     }
   };
 
+  const handleImageChange = (file: File) => {
+    setImageFile(file);
+    setImagePreview(URL.createObjectURL(file));
+  };
+
   const handleFormChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { id, value } = e.target;
     setFormData(prevData => ({ ...prevData, [id]: value }));
@@ -90,11 +95,6 @@ export default function ProductModal({ product, isOpen, onClose, onSuccess }: TP
     } finally {
       isSubmitting.toggle();
     }
-  };
-
-  const handleImageChange = (file: File) => {
-    setImageFile(file);
-    setImagePreview(URL.createObjectURL(file));
   };
 
   useEffect(() => {
