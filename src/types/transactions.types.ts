@@ -1,7 +1,8 @@
 import { BaseResponse } from '@/types';
+import { Product } from '@/types/products.types';
 
 interface PurchasedItems {
-  productId: string;
+  productId: Product;
   qty: number;
 }
 

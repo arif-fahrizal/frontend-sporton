@@ -1,33 +1,12 @@
+import { Transaction } from '@/types/transactions.types';
 import { formatRupiah } from '@/utils/currency.utils';
+import { formatDate } from '@/utils/date.utils';
 import { FiEye } from 'react-icons/fi';
 
 interface TTransactionTableProps {
-  onViewDetails: () => void;
+  transactions: Transaction[];
+  onViewDetails: (transaction: Transaction) => void;
 }
-
-const TRANSACTIONS_DATA = [
-  {
-    date: '23/02/2026 19.32',
-    customer: 'John Doe',
-    contact: '08123456789',
-    total: 500000,
-    status: 'pending',
-  },
-  {
-    date: '23/02/2026 19.32',
-    customer: 'John Doezz',
-    contact: '08123456789',
-    total: 500000,
-    status: 'paid',
-  },
-  {
-    date: '23/02/2026 19.32',
-    customer: 'John Doell',
-    contact: '08123456789',
-    total: 500000,
-    status: 'rejected',
-  },
-];
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const statusColor: any = {
@@ -36,7 +15,7 @@ const statusColor: any = {
   rejected: 'text-red-600 border-red-400 bg-red-100',
 };
 
-export default function TransactionTable({ onViewDetails }: TTransactionTableProps) {
+export default function TransactionTable({ transactions, onViewDetails }: TTransactionTableProps) {
   return (
     <div className="rounded-xl border border-gray-200 bg-white">
       <table className="w-full text-left border-collapse">
@@ -51,12 +30,12 @@ export default function TransactionTable({ onViewDetails }: TTransactionTablePro
           </tr>
         </thead>
         <tbody>
-          {TRANSACTIONS_DATA.map((transaction, index) => (
-            <tr key={`${transaction.date}-${index}`} className="border-b border-gray-200 last:border-b-0">
-              <td className="py-4 px-6 font-medium">{transaction.date}</td>
-              <td className="py-4 px-6 font-medium">{transaction.customer}</td>
-              <td className="py-4 px-6 font-medium">{transaction.contact}</td>
-              <td className="py-4 px-6 font-medium">{formatRupiah(transaction.total)}</td>
+          {transactions.map((transaction, index) => (
+            <tr key={`${transaction._id}-${index}`} className="border-b border-gray-200 last:border-b-0">
+              <td className="py-4 px-6 font-medium">{formatDate(transaction.createdAt)}</td>
+              <td className="py-4 px-6 font-medium">{transaction.customerName}</td>
+              <td className="py-4 px-6 font-medium">{transaction.customerContact}</td>
+              <td className="py-4 px-6 font-medium">{formatRupiah(transaction.totalPayment)}</td>
               <td className="py-4 px-6 font-medium">
                 <span
                   className={`inline-block py-1 px-4 text-sm text-center uppercase rounded-full border-2 ${statusColor[transaction.status]}`}
@@ -66,7 +45,7 @@ export default function TransactionTable({ onViewDetails }: TTransactionTablePro
               </td>
               <td className="py-4 px-6 font-medium">
                 <button
-                  onClick={onViewDetails}
+                  onClick={() => onViewDetails(transaction)}
                   className="flex items-center gap-2.5 py-1 px-2 rounded-md duration-500 hover:bg-gray-100"
                 >
                   <FiEye size={24} />
