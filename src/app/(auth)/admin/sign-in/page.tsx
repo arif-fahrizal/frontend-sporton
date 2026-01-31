@@ -85,5 +85,5 @@ export default function SignInPage() {
   );
 }
 
-// User: admin@sporton.com
+// admin@sporton.com
 // Adm1NSp0rt2530
