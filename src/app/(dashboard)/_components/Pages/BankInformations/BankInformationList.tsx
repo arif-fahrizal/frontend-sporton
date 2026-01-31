@@ -1,27 +1,16 @@
+import { Bank } from '@/types/banks.types';
 import { FiCreditCard, FiEdit2, FiTrash2 } from 'react-icons/fi';
 
-const BANK_DATA = [
-  {
-    bankName: 'BCA',
-    accountHolder: 'PT SportsOn Digital',
-    accountNumber: '1234567890',
-  },
-  {
-    bankName: 'BRI',
-    accountHolder: 'PT SportsOn Digital',
-    accountNumber: '1234567890',
-  },
-  {
-    bankName: 'MANDIRI',
-    accountHolder: 'PT SportsOn Digital',
-    accountNumber: '1234567890',
-  },
-];
+interface TBankInformationListProps {
+  banks: Bank[];
+  onEdit?: (bank: Bank) => void;
+  onDelete?: (id: string) => void;
+}
 
-export default function BankInformationList() {
+export default function BankInformationList({ banks, onEdit, onDelete }: TBankInformationListProps) {
   return (
     <div className="grid grid-cols-3 gap-5">
-      {BANK_DATA.map((bank, index) => (
+      {banks.map((bank, index) => (
         <div key={`bank-${index}`} className="rounded-lg border border-gray-200 bg-white">
           <div className="flex justify-between p-5">
             <div className="flex items-center gap-2">
@@ -34,10 +23,10 @@ export default function BankInformationList() {
               </div>
             </div>
             <div className="flex gap-5 -mt-5 text-gray-600">
-              <button>
+              <button type="button" onClick={() => onEdit?.(bank)}>
                 <FiEdit2 size={24} />
               </button>
-              <button>
+              <button type="button" onClick={() => onDelete?.(bank._id)}>
                 <FiTrash2 size={24} />
               </button>
             </div>
@@ -47,7 +36,7 @@ export default function BankInformationList() {
             <p>{bank.accountNumber}</p>
           </div>
           <p className="py-3 px-5 text-xs border-t border-gray-200">
-            <span className="opacity-50">Holder :</span> {bank.accountHolder}
+            <span className="opacity-50">Holder :</span> {bank.accountName}
           </p>
         </div>
       ))}

@@ -9,23 +9,23 @@ export const getBankById = async (id: string): Promise<Bank> => {
   return await fetchAPI<Bank>(`/banks/${id}`);
 };
 
-export const createBank = async (data: FormData): Promise<Bank> => {
+export const createBank = async (data: Partial<Bank>): Promise<Bank> => {
   return await fetchAPI<Bank>('/banks', {
     method: 'POST',
     headers: {
       ...(await getAuthHeaders()),
     },
-    body: data,
+    body: JSON.stringify(data),
   });
 };
 
-export const updateBank = async (id: string, data: FormData): Promise<Bank> => {
+export const updateBank = async (id: string, data: Partial<Bank>): Promise<Bank> => {
   return await fetchAPI<Bank>(`/banks/${id}`, {
     method: 'PUT',
     headers: {
       ...(await getAuthHeaders()),
     },
-    body: data,
+    body: JSON.stringify(data),
   });
 };
 
