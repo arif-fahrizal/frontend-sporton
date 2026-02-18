@@ -6,6 +6,7 @@ import { useCartStore } from '@/hooks/useCartStore';
 import { NAV_HEADER } from '@/utils/navigation.utils';
 import Image from 'next/image';
 import Link from 'next/link';
+import { Activity } from 'react';
 import { FiMenu, FiSearch, FiShoppingBag, FiX } from 'react-icons/fi';
 
 export default function Header() {
@@ -55,7 +56,9 @@ export default function Header() {
                 </span>
               )}
             </button>
-            {isCartOpen.value && <CartPopUp />}
+            <Activity name="cart" mode={isCartOpen.value ? 'visible' : 'hidden'}>
+              <CartPopUp />
+            </Activity>
             <button onClick={isMenuOpen.toggle} aria-label="Toggle menu" className="md:hidden">
               {isMenuOpen.value ? <FiX size={24} /> : <FiMenu size={24} />}
             </button>
