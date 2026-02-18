@@ -43,7 +43,7 @@ export default function CardProduct({ href = '#', product }: TCardProductProps) 
         {name}
       </h3>
       <div className="flex flex-col justify-between gap-1.5 text-xs sm:flex-row md:mb-2.5 md:text-sm lg:text-base">
-        <div className="max-w-[10ch] truncate text-gray-500">{category.name}</div>
+        <div className="max-w-[10ch] truncate text-gray-500">{category?.name}</div>
         <div className="text-primary text-right font-medium">{formatRupiah(price)}</div>
       </div>
     </Link>

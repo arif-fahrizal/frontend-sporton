@@ -1,4 +1,4 @@
-import { BaseResponse } from '@/types';
+import { MongoResponse } from '@/types';
 import { Product } from '@/types/products.types';
 
 interface PurchasedItems {
@@ -6,7 +6,7 @@ interface PurchasedItems {
   qty: number;
 }
 
-export interface Transaction extends BaseResponse {
+export interface Transaction extends MongoResponse {
   paymentProof: string;
   status: 'pending' | 'rejected' | 'paid';
   purchasedItems: PurchasedItems[];

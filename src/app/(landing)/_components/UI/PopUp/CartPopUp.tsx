@@ -63,16 +63,16 @@ export default function CartPopUp() {
                 />
               </div>
               <div className="self-center">
-                <span className="text-sm font-medium">{product.name}</span>
+                <span className="text-sm font-medium">{product?.name}</span>
                 <div className="flex gap-3 text-xs font-medium">
-                  <span>{product.qty}x</span>
-                  <span className="text-primary">{formatRupiah(product.price)}</span>
+                  <span>{product?.qty}x</span>
+                  <span className="text-primary">{formatRupiah(product?.price)}</span>
                 </div>
               </div>
               <Button
                 size="small"
                 variant="ghost"
-                onClick={() => removeItem(product._id)}
+                onClick={() => removeItem(product?._id)}
                 className="self-center w-7 h-7 ml-auto p-0!"
               >
                 <FiTrash2 />

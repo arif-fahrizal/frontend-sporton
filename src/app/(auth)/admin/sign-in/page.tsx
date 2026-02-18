@@ -25,9 +25,9 @@ export default function SignInPage() {
   const handleSignIn = async () => {
     setIsLoading(true);
     try {
-      const data = await SignIn({ email, password });
+      const response = await SignIn({ email, password });
 
-      if (data.token) {
+      if (response.token) {
         push('/admin/products');
       }
     } catch (error) {

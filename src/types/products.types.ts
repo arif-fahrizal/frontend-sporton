@@ -1,7 +1,7 @@
-import { BaseResponse } from '@/types';
+import { MongoResponse } from '@/types';
 import { Category } from '@/types/categories.types';
 
-export interface Product extends BaseResponse {
+export interface Product extends MongoResponse {
   name: string;
   description: string;
   imageUrl: string;

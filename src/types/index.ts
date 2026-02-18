@@ -4,7 +4,14 @@ export interface ParamsProps {
   };
 }
 
-export interface BaseResponse {
+export interface BaseResponse<T> {
+  success: boolean;
+  message: string;
+  token?: string;
+  data: T;
+}
+
+export interface MongoResponse {
   _id: string;
   createdAt: string;
   updatedAt: string;

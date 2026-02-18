@@ -77,7 +77,7 @@ export default function ProductModal({ product, isOpen, onClose, onSuccess }: TP
       if (!product) {
         await createProduct(data);
       } else {
-        await updateProduct(product._id, data);
+        await updateProduct(product?._id, data);
       }
 
       setFormData(initialFormData);
@@ -104,13 +104,13 @@ export default function ProductModal({ product, isOpen, onClose, onSuccess }: TP
   useEffect(() => {
     if (!!product && isOpen) {
       setFormData({
-        name: product.name,
-        price: product.price,
-        stock: product.stock,
-        categoryId: product.category._id,
-        description: product.description,
+        name: product?.name,
+        price: product?.price,
+        stock: product?.stock,
+        categoryId: product?.category?._id,
+        description: product?.description,
       });
-      setImagePreview(getImageUrl(product.imageUrl) || null);
+      setImagePreview(getImageUrl(product?.imageUrl) || null);
     } else if (isOpen) {
       setFormData(initialFormData);
       setImageFile(null);

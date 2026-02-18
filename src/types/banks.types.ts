@@ -1,6 +1,6 @@
-import { BaseResponse } from '@/types';
+import { MongoResponse } from '@/types';
 
-export interface Bank extends BaseResponse {
+export interface Bank extends MongoResponse {
   bankName: string;
   accountName: string;
   accountNumber: string;

@@ -27,14 +27,14 @@ export default function CategoriesSection({ categories }: TCategoriesSectionProp
                 <div className="relative w-16 h-16 mb-2 transition-transform duration-300 group-hover:scale-110 sm:w-18 sm:h-18 sm:mb-2.5 lg:w-24 lg:h-24 xl:w-28 xl:h-28">
                   <Image
                     src={getImageUrl(category.imageUrl)}
-                    alt={category.name}
+                    alt={category?.name}
                     fill
                     sizes="(max-width: 640px) 64px, (max-width: 768px) 80px, 86px"
                     className="object-contain"
                   />
                 </div>
                 <span className="text-xs text-center text-primary font-medium transition-colors group-hover:text-primary/80 sm:text-sm lg:text-xl">
-                  {category.name}
+                  {category?.name}
                 </span>
               </div>
             </div>

@@ -1,13 +1,11 @@
+import { MongoResponse } from '@/types';
+
 export interface LoginCredentials {
   email: string;
   password: string;
 }
 
-export interface LoginResponse {
-  token: string;
-  user: {
-    id: string;
-    name: string;
-    email: string;
-  };
+export interface User extends MongoResponse {
+  name: string;
+  email: string;
 }

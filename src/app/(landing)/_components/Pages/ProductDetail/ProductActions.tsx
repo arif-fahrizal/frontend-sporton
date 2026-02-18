@@ -23,7 +23,7 @@ export default function ProductActions({ product }: TProductActionsProps) {
     e.preventDefault();
     e.stopPropagation();
 
-    const currentCartQty = items.find(item => item._id === product._id)?.qty || 0;
+    const currentCartQty = items.find(item => item?._id === product?._id)?.qty || 0;
     const availableStock = product.stock - currentCartQty;
     const qtyToAdd = Math.min(qty, availableStock);
 

@@ -2,38 +2,48 @@ import { fetchAPI, getAuthHeaders } from '@/lib/api';
 import { Category } from '@/types/categories.types';
 
 export const getAllCategories = async (): Promise<Category[]> => {
-  return await fetchAPI<Category[]>('/categories');
+  const response = await fetchAPI<Category[]>('/categories');
+
+  return response?.data;
 };
 
 export const getCategoryById = async (id: string): Promise<Category> => {
-  return await fetchAPI<Category>(`/categories/${id}`);
+  const response = await fetchAPI<Category>(`/categories/${id}`);
+
+  return response?.data;
 };
 
 export const createCategory = async (data: FormData): Promise<Category> => {
-  return await fetchAPI<Category>('/categories', {
+  const response = await fetchAPI<Category>('/categories', {
     method: 'POST',
     headers: {
       ...(await getAuthHeaders()),
     },
     body: data,
   });
+
+  return response?.data;
 };
 
 export const updateCategory = async (id: string, data: FormData): Promise<Category> => {
-  return await fetchAPI<Category>(`/categories/${id}`, {
+  const response = await fetchAPI<Category>(`/categories/${id}`, {
     method: 'PUT',
     headers: {
       ...(await getAuthHeaders()),
     },
     body: data,
   });
+
+  return response?.data;
 };
 
 export const deleteCategory = async (id: string): Promise<void> => {
-  return await fetchAPI<void>(`/categories/${id}`, {
+  const response = await fetchAPI<void>(`/categories/${id}`, {
     method: 'DELETE',
     headers: {
       ...(await getAuthHeaders()),
     },
   });
+
+  return response?.data;
 };

@@ -1,7 +1,7 @@
 'use server';
 
 import { fetchAPI } from '@/lib/api';
-import { LoginCredentials, LoginResponse } from '@/types/auth.types';
+import { LoginCredentials, User } from '@/types/auth.types';
 import { cookies } from 'next/headers';
 
 export const getCookies = async () => {
@@ -12,8 +12,8 @@ export const getCookies = async () => {
   return { token, user };
 };
 
-export const SignIn = async (credentials: LoginCredentials): Promise<LoginResponse> => {
-  const res = await fetchAPI<LoginResponse>('/auth/signin', {
+export const SignIn = async (credentials: LoginCredentials) => {
+  const response = await fetchAPI<User>('/auth/signin', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -23,12 +23,14 @@ export const SignIn = async (credentials: LoginCredentials): Promise<LoginRespon
 
   const cookieStore = await cookies();
 
-  if (res.token) {
-    cookieStore.set('token', res.token);
-    cookieStore.set('user', JSON.stringify(res.user));
+  const { token, data } = response || {};
+
+  if (token) {
+    cookieStore.set('token', token);
+    cookieStore.set('user', JSON.stringify(data));
   }
 
-  return res;
+  return response;
 };
 
 export const Logout = async () => {

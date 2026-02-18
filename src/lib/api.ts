@@ -1,6 +1,7 @@
 import { getCookies } from '@/services/auth.service';
+import { BaseResponse } from '@/types';
 
-export async function fetchAPI<T>(endpoint: string, options?: RequestInit): Promise<T> {
+export async function fetchAPI<T>(endpoint: string, options?: RequestInit): Promise<BaseResponse<T>> {
   const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}${endpoint}`, {
     ...options,
     cache: options?.cache || 'no-store',
