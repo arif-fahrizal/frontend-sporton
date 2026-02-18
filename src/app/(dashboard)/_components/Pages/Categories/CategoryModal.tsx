@@ -107,6 +107,7 @@ export default function CategoryModal({ category, isOpen, onClose, onSuccess }: 
                 placeholder="e. g. Running Shoes"
                 value={formData.name}
                 onChange={handleFormChange}
+                required
               />
             </div>
             <div className="input-group-admin">
@@ -118,6 +119,7 @@ export default function CategoryModal({ category, isOpen, onClose, onSuccess }: 
                 placeholder="Category Details"
                 value={formData.description}
                 onChange={handleFormChange}
+                required
               />
             </div>
           </div>

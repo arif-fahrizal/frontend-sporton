@@ -29,7 +29,7 @@ export const createTransaction = async (data: FormData): Promise<Transaction> =>
 };
 
 export const transactionCheckout = async (data: FormData): Promise<Transaction> => {
-  const response = await fetchAPI<Transaction>('/transaction/checkout', {
+  const response = await fetchAPI<Transaction>('/transactions/checkout', {
     method: 'POST',
     body: data,
   });

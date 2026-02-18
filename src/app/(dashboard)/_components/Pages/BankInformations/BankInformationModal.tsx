@@ -80,6 +80,7 @@ export default function BankInformationModal({ bank, isOpen, onClose, onSuccess 
               placeholder="e. g. Mandiri, BCA, BRI"
               value={formData.bankName}
               onChange={handleFormChange}
+              required
             />
           </div>
           <div className="input-group-admin">
@@ -91,6 +92,7 @@ export default function BankInformationModal({ bank, isOpen, onClose, onSuccess 
               placeholder="e. g. 12124124124"
               value={formData.accountNumber}
               onChange={handleFormChange}
+              required
             />
           </div>
           <div className="input-group-admin">
@@ -102,6 +104,7 @@ export default function BankInformationModal({ bank, isOpen, onClose, onSuccess 
               placeholder="e. g. Holder Name as registered on the account"
               value={formData.accountName}
               onChange={handleFormChange}
+              required
             />
           </div>
         </div>

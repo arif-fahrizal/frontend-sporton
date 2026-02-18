@@ -35,7 +35,7 @@ export default function ImageUploadPreview({ label, value, onChange, className }
             <span className="text-sm font-medium">Click to upload</span>
           </>
         )}
-        <input ref={fileInputRef} type="file" id={label} accept="image/*" onChange={handleFileChange} hidden />
+        <input ref={fileInputRef} type="file" id={label} accept="image/*" onChange={handleFileChange} required hidden />
       </div>
     </div>
   );

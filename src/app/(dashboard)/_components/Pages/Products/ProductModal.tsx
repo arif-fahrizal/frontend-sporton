@@ -23,7 +23,7 @@ interface ProductFormData {
   name: string;
   price: number;
   stock: number;
-  categoryId: string;
+  category: string;
   description: string;
 }
 
@@ -31,7 +31,7 @@ const initialFormData: ProductFormData = {
   name: '',
   price: 0,
   stock: 0,
-  categoryId: '',
+  category: '',
   description: '',
 };
 
@@ -71,8 +71,12 @@ export default function ProductModal({ product, isOpen, onClose, onSuccess }: TP
       data.append('name', formData.name);
       data.append('price', String(formData.price));
       data.append('stock', String(formData.stock));
-      data.append('categoryId', formData.categoryId);
+      data.append('category', formData.category);
       data.append('description', formData.description);
+
+      if (imageFile) {
+        data.append('image', imageFile);
+      }
 
       if (!product) {
         await createProduct(data);
@@ -107,7 +111,7 @@ export default function ProductModal({ product, isOpen, onClose, onSuccess }: TP
         name: product?.name,
         price: product?.price,
         stock: product?.stock,
-        categoryId: product?.category?._id,
+        category: product?.category?._id,
         description: product?.description,
       });
       setImagePreview(getImageUrl(product?.imageUrl) || null);
@@ -133,6 +137,7 @@ export default function ProductModal({ product, isOpen, onClose, onSuccess }: TP
                 placeholder="e. g. Running Shoes"
                 value={formData.name}
                 onChange={handleFormChange}
+                required
               />
             </div>
             <div className="grid grid-cols-2 gap-5">
@@ -145,6 +150,7 @@ export default function ProductModal({ product, isOpen, onClose, onSuccess }: TP
                   placeholder="e. g. 5000000"
                   value={formData.price}
                   onChange={handleFormChange}
+                  required
                 />
               </div>
               <div className="input-group-admin">
@@ -156,12 +162,13 @@ export default function ProductModal({ product, isOpen, onClose, onSuccess }: TP
                   placeholder="e. g. 100"
                   value={formData.stock}
                   onChange={handleFormChange}
+                  required
                 />
               </div>
             </div>
             <div className="input-group-admin">
-              <label htmlFor="categoryId">Category</label>
-              <select name="categoryId" id="categoryId" value={formData.categoryId} onChange={handleFormChange}>
+              <label htmlFor="category">Category</label>
+              <select name="category" id="category" value={formData.category} onChange={handleFormChange} required>
                 <option defaultValue="" disabled>
                   Select Category
                 </option>

@@ -34,7 +34,10 @@ export default function PaymentSteps() {
       formData.append('customerContact', String(customerInfo.customerContact));
       formData.append('customerAddress', customerInfo.customerAddress);
       formData.append('image', imageFile);
-      formData.append('purchasedItems', JSON.stringify(items.map(item => ({ productId: item._id, qty: item.qty }))));
+      formData.append(
+        'purchasedItems',
+        JSON.stringify(items.map(item => ({ productId: item._id, quantity: item.qty })))
+      );
       formData.append('totalPayment', String(TOTAL_PRICE));
 
       const res = await transactionCheckout(formData);
