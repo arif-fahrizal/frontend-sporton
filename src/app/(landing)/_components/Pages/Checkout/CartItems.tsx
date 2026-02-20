@@ -24,7 +24,7 @@ export default function CartItems({ onPayment }: TCartItemProps) {
           <div key={`cart-item-${index}`} className="flex gap-3 p-4 border-b border-gray-200">
             <div className="flex justify-center items-center w-16 aspect-square bg-primary-light">
               <Image
-                src={getImageUrl(product.imageUrl)}
+                src={getImageUrl(product.image)}
                 alt={product.name}
                 width={63}
                 height={63}

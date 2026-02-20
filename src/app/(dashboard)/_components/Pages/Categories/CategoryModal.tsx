@@ -84,7 +84,7 @@ export default function CategoryModal({ category, isOpen, onClose, onSuccess }: 
   useEffect(() => {
     if (!!category && isOpen) {
       setFormData({ name: category.name, description: category.description });
-      setImagePreview(getImageUrl(category.imageUrl) || null);
+      setImagePreview(getImageUrl(category.image) || null);
     } else if (isOpen) {
       setFormData(initialFormData);
       setImageFile(null);

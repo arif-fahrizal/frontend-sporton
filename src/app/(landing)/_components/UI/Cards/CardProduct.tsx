@@ -15,7 +15,7 @@ interface TCardProductProps {
 }
 
 export default function CardProduct({ href = '#', product }: TCardProductProps) {
-  const { name, imageUrl, category, price } = product;
+  const { name, image, category, price } = product;
 
   const { addItem } = useCartStore();
 
@@ -28,13 +28,7 @@ export default function CardProduct({ href = '#', product }: TCardProductProps) 
   return (
     <Link href={href} className="p-1.5 duration-300 bg-white hover:drop-shadow-xl">
       <div className="relative flex justify-center items-center w-full aspect-square bg-primary-light">
-        <Image
-          src={getImageUrl(imageUrl)}
-          alt={name}
-          width={300}
-          height={300}
-          className="aspect-square object-contain"
-        />
+        <Image src={getImageUrl(image)} alt={name} width={300} height={300} className="aspect-square object-contain" />
         <Button onClick={handleAddToCart} className="absolute size-6 top-2.5 right-2.5 p-1! sm:size-8 lg:size-10">
           <FiPlus size={24} />
         </Button>

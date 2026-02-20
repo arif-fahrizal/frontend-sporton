@@ -28,7 +28,7 @@ export default function ProductTable({ products, onEdit, onDelete }: TProductTab
             <tr key={`${product?.name}-${index}`} className="border-b border-gray-200 last:border-b-0">
               <td className="flex items-center gap-2 py-4 px-6 font-medium">
                 <Image
-                  src={getImageUrl(product?.imageUrl)}
+                  src={getImageUrl(product?.image)}
                   alt={product?.name}
                   width={52}
                   height={52}

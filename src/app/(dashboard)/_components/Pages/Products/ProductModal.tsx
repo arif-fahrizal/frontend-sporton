@@ -114,7 +114,7 @@ export default function ProductModal({ product, isOpen, onClose, onSuccess }: TP
         category: product?.category?._id,
         description: product?.description,
       });
-      setImagePreview(getImageUrl(product?.imageUrl) || null);
+      setImagePreview(getImageUrl(product?.image) || null);
     } else if (isOpen) {
       setFormData(initialFormData);
       setImageFile(null);

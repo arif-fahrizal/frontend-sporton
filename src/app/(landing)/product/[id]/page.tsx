@@ -16,7 +16,7 @@ export default async function ProductDetailPage({ params }: TProductDetailPagePr
     <main className="container grid gap-10 mx-auto py-20 px-4 md:grid-cols-[20rem_1fr] lg:py-40 lg:grid-cols-[27.5rem_1fr] xl:grid-cols-[33.5rem_1fr] xl:gap-12 2xl:grid-cols-[40rem_1fr]">
       <div className="flex justify-center items-center aspect-square bg-primary-light lg:max-w-110 xl:max-w-134 2xl:max-w-160">
         <Image
-          src={getImageUrl(product.imageUrl)}
+          src={getImageUrl(product.image)}
           alt={product?.name}
           width={550}
           height={550}

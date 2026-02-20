@@ -20,13 +20,13 @@ export default function CategoriesSection({ categories }: TCategoriesSectionProp
       </div>
 
       <div className="grid grid-cols-3 gap-4 sm:grid-cols-6 md:gap-6 lg:gap-8 xl:gap-14">
-        {categories.map((category, index) => (
+        {categories?.map((category, index) => (
           <Link key={`categories-${index}`} href="#" className="group">
             <div className="flex flex-col justify-center items-center w-full aspect-square p-2 rounded-lg transition-all duration-300 bg-linear-to-br from-[#F1F1F1] to-[#F7F7F7] cursor-pointer hover:shadow-lg hover:scale-105 md:p-3 lg:p-4">
               <div className="flex flex-col justify-center items-center h-full">
                 <div className="relative w-16 h-16 mb-2 transition-transform duration-300 group-hover:scale-110 sm:w-18 sm:h-18 sm:mb-2.5 lg:w-24 lg:h-24 xl:w-28 xl:h-28">
                   <Image
-                    src={getImageUrl(category.imageUrl)}
+                    src={getImageUrl(category.image)}
                     alt={category?.name}
                     fill
                     sizes="(max-width: 640px) 64px, (max-width: 768px) 80px, 86px"

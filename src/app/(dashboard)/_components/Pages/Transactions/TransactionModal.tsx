@@ -72,7 +72,7 @@ export default function TransactionModal({ transaction, isOpen, onClose, onStatu
               <div key={`item-${index}`} className="flex items-center gap-2 p-2 rounded-lg border border-gray-200">
                 <div className="flex justify-center items-center w-8 aspect-square rounded bg-gray-100">
                   <Image
-                    src={item.productId ? getImageUrl(item.productId?.imageUrl) : ''}
+                    src={item.productId ? getImageUrl(item.productId?.image) : ''}
                     width={30}
                     height={30}
                     alt="Product Image"

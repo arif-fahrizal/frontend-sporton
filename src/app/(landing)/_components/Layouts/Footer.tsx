@@ -1,10 +1,10 @@
+'use client';
+
 import { NAV_FOOTER, SOCIAL_MEDIA } from '@/utils/navigation.utils';
 import Image from 'next/image';
 import Link from 'next/link';
 
-const date = new Date();
-const currentYear = date.getFullYear();
-
+const currentYear = new Date().getFullYear();
 export default function Footer() {
   return (
     <footer className="px-4 text-white bg-dark-alternate">
