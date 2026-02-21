@@ -125,7 +125,7 @@ export default function ProductModal({ product, isOpen, onClose, onSuccess }: TP
   return (
     <Modal title={!product ? 'Add New Product' : 'Update Product'} isOpen={isOpen} onClose={onClose}>
       <form onSubmit={handleSubmit} className="flex flex-col gap-6">
-        <div className="flex gap-7">
+        <div className="flex flex-col md:flex-row gap-2.5 md:gap-7">
           <ImageUploadPreview label="Product Image" value={imagePreview} onChange={handleImageChange} />
           <div className="flex flex-col gap-4 w-full">
             <div className="input-group-admin">

@@ -67,12 +67,12 @@ export default function ProductsPage() {
 
   return (
     <section>
-      <div className="flex justify-between items-center mb-10">
+      <div className="flex flex-wrap justify-between items-center gap-5 mb-10">
         <div className="">
-          <h1 className="text-2xl font-bold">Product Management</h1>
-          <p className="opacity-50">Manage your inventory, prices and stocks.</p>
+          <h1 className="text-lg md:text-2xl font-bold">Product Management</h1>
+          <p className="text-sm md:text-base opacity-50">Manage your inventory, prices and stocks.</p>
         </div>
-        <Button onClick={isModalOpen.toggle} className="rounded-lg">
+        <Button onClick={isModalOpen.toggle} className="py-3! md:py-4! rounded-lg">
           <FiPlus size={24} />
           Add Product
         </Button>
