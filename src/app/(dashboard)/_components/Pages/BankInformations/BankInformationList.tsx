@@ -9,9 +9,9 @@ interface TBankInformationListProps {
 
 export default function BankInformationList({ banks, onEdit, onDelete }: TBankInformationListProps) {
   return (
-    <div className="grid grid-cols-3 gap-5">
+    <div className="flex flex-wrap gap-5">
       {banks.map((bank, index) => (
-        <div key={`bank-${index}`} className="rounded-lg border border-gray-200 bg-white">
+        <div key={`bank-${index}`} className="flex-1 min-w-62.5 rounded-lg border border-gray-200 bg-white">
           <div className="flex justify-between p-5">
             <div className="flex items-center gap-2">
               <div className="flex justify-center items-center w-12 h-12 rounded text-blue-600 bg-blue-50">
