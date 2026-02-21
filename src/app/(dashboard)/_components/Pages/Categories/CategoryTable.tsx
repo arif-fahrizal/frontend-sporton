@@ -11,7 +11,7 @@ interface TCategoryTableProps {
 
 export default function CategoryTable({ categories, onEdit, onDelete }: TCategoryTableProps) {
   return (
-    <div className="w-full rounded-xl border border-gray-200 bg-white overflow-scroll">
+    <div className="w-full rounded-xl border border-gray-200 overflow-x-scroll">
       <table className="w-full text-left border-collapse">
         <thead>
           <tr className="border-b border-gray-200">

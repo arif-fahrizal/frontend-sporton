@@ -17,7 +17,7 @@ const statusColor: any = {
 
 export default function TransactionTable({ transactions, onViewDetails }: TTransactionTableProps) {
   return (
-    <div className="w-full rounded-xl border border-gray-200 bg-white overflow-scroll">
+    <div className="w-full rounded-xl border border-gray-200 overflow-x-scroll">
       <table className="w-full text-left border-collapse">
         <thead>
           <tr className="border-b border-gray-200">

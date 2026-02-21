@@ -28,7 +28,7 @@ export default function Sidebar() {
         </button>
       </div>
       <div
-        className={`absolute lg:static flex flex-col w-full lg:h-[calc(100vh-118px)] top-16 ${isMenuOpen ? 'left-0' : '-left-full'} lg:left-0 lg:mt-12 p-5 border-r border-gray-100 duration-300 bg-white z-10`}
+        className={`absolute lg:static flex flex-col w-full lg:h-[calc(100vh-148px)] top-16 ${isMenuOpen ? 'left-0' : '-left-full'} lg:left-0 lg:mt-12 p-5 border-r border-gray-100 duration-300 bg-white z-10`}
       >
         <div className="flex flex-col gap-2">
           {NAV_ADMIN.map((nav, index) => {

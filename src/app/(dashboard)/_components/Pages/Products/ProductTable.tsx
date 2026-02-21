@@ -12,7 +12,7 @@ interface TProductTableProps {
 
 export default function ProductTable({ products, onEdit, onDelete }: TProductTableProps) {
   return (
-    <div className="w-full rounded-xl border border-gray-200 bg-white overflow-scroll">
+    <div className="w-full rounded-xl border border-gray-200 overflow-x-scroll">
       <table className="w-full text-left border-collapse">
         <thead>
           <tr className="border-b border-gray-200">
