@@ -11,19 +11,19 @@ interface TCategoryTableProps {
 
 export default function CategoryTable({ categories, onEdit, onDelete }: TCategoryTableProps) {
   return (
-    <div className="rounded-xl border border-gray-200 bg-white">
+    <div className="w-full rounded-xl border border-gray-200 bg-white overflow-scroll">
       <table className="w-full text-left border-collapse">
         <thead>
           <tr className="border-b border-gray-200">
-            <th className="py-4 px-6 font-semibold">Category Name</th>
-            <th className="py-4 px-6 font-semibold">Description</th>
-            <th className="py-4 px-6 font-semibold">Action</th>
+            <th className="py-2.5 px-3.5 md:py-4 md:px-6 font-semibold">Category Name</th>
+            <th className="py-2.5 px-3.5 md:py-4 md:px-6 font-semibold">Description</th>
+            <th className="py-2.5 px-3.5 md:py-4 md:px-6 font-semibold">Action</th>
           </tr>
         </thead>
         <tbody>
           {categories.map((category, index) => (
             <tr key={`${category.name}-${index}`} className="border-b border-gray-200 last:border-b-0">
-              <td className="flex items-center gap-2 py-4 px-6 font-medium">
+              <td className="flex items-center gap-2 py-2.5 px-3.5 md:py-4 md:px-6 font-medium">
                 <Image
                   src={getImageUrl(category.image)}
                   alt={category.name}
@@ -31,10 +31,12 @@ export default function CategoryTable({ categories, onEdit, onDelete }: TCategor
                   height={52}
                   className="aspect-square rounded-md object-contain bg-gray-100"
                 />
-                <span>{category.name}</span>
+                <span title={category.name} className="truncate">
+                  {category.name}
+                </span>
               </td>
-              <td className="py-4 px-6 font-medium">{category.description}</td>
-              <td className="py-4 px-6 text-gray-600 font-medium">
+              <td className="py-2.5 px-3.5 md:py-4 md:px-6 font-medium">{category.description}</td>
+              <td className="py-2.5 px-3.5 md:py-4 md:px-6 text-gray-600 font-medium">
                 <div className="flex gap-5">
                   <button type="button" onClick={() => onEdit?.(category)}>
                     <FiEdit2 size={24} />

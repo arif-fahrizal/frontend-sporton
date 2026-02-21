@@ -95,7 +95,7 @@ export default function CategoryModal({ category, isOpen, onClose, onSuccess }: 
   return (
     <Modal title={!category ? 'Add New Category' : 'Update Category'} isOpen={isOpen} onClose={onClose}>
       <form onSubmit={handleSubmit} className="flex flex-col gap-6">
-        <div className="flex gap-7">
+        <div className="flex flex-col md:flex-row gap-7">
           <ImageUploadPreview label="Category Image" value={imagePreview} onChange={handleImageChange} />
           <div className="flex flex-col gap-4 w-full">
             <div className="input-group-admin">
