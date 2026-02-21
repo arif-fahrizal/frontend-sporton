@@ -36,11 +36,17 @@ export default function TransactionModal({ transaction, isOpen, onClose, onStatu
 
   return (
     <Modal title="Verify Transactions" isOpen={isOpen} onClose={onClose}>
-      <div className="flex gap-6">
+      <div className="flex flex-col md:flex-row gap-3 md:gap-6">
         <div className="min-w-52">
           <h4 className="mb-2 text-xs font-semibold">Payment Proof</h4>
           {transaction?.paymentProof ? (
-            <Image src={getImageUrl(transaction.paymentProof)} alt="Payment Proof" width={200} height={400} />
+            <Image
+              src={getImageUrl(transaction.paymentProof)}
+              alt="Payment Proof"
+              width={200}
+              height={400}
+              className="h-75 md:h-100"
+            />
           ) : (
             <p className="p-4 text-sm text-center">No Payment Proof</p>
           )}
@@ -84,11 +90,11 @@ export default function TransactionModal({ transaction, isOpen, onClose, onStatu
               </div>
             ))}
           </div>
-          <div className="flex justify-between mt-6 text-sm">
+          <div className="flex justify-between mt-3 md:mt-6 text-sm">
             <h4 className="font-semibold">Total </h4>
             <span className="text-primary font-semibold">{formatRupiah(transaction?.totalPayment || 0)}</span>
           </div>
-          <div className="flex justify-end gap-5 mt-12">
+          <div className="flex flex-wrap justify-end gap-5 mt-5 md:mt-12">
             <Button
               size="small"
               onClick={() => handleStatusChange('rejected')}

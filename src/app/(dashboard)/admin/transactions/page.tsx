@@ -59,8 +59,8 @@ export default function TransactionsPage() {
     <section>
       <div className="flex justify-between items-center mb-10">
         <div className="">
-          <h1 className="text-2xl font-bold">Transactions</h1>
-          <p className="opacity-50">Verify incoming payments and manage orders.</p>
+          <h1 className="text-lg md:text-2xl font-bold">Transactions</h1>
+          <p className="text-sm md:text-base opacity-50">Verify incoming payments and manage orders.</p>
         </div>
       </div>
       <TransactionTable transactions={transactions} onViewDetails={handleViewDetails} />
