@@ -42,9 +42,11 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
   return (
     <html lang="en">
       <body className={`${poppins.variable} antialiased`}>
-        <div className="flex min-h-dvh bg-white">
+        <div className="flex flex-col md:flex-row min-h-dvh bg-white">
           <Sidebar />
-          <main className="flex-1 min-h-dvh ml-80 p-14 bg-[#F7F9FA]">{children}</main>
+          <main className="flex-1 w-full min-h-dvh mt-16 lg:mt-0 lg:ml-60 xl:ml-80 p-5 xl:p-14 bg-[#F7F9FA] overflow-hidden">
+            {children}
+          </main>
         </div>
         <ToastContainer position="bottom-right" />
       </body>
