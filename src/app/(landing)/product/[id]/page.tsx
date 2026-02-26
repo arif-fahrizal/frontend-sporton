@@ -1,5 +1,5 @@
 import ProductActions from '@/app/(landing)/_components/Pages/ProductDetail/ProductActions';
-import { getImageUrl } from '@/lib/api';
+import { getImageUrl } from '@/lib/api.client';
 import { getProductById } from '@/services/product.service';
 import { formatRupiah } from '@/utils/currency.utils';
 import Image from 'next/image';

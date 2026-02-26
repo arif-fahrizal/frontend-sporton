@@ -2,7 +2,7 @@ import OrderConfirmed from '@/app/(landing)/_components/Pages/OrderStatus/OrderC
 import OrderRejected from '@/app/(landing)/_components/Pages/OrderStatus/OrderRejected';
 import OrderSubmitted from '@/app/(landing)/_components/Pages/OrderStatus/OrderSubmitted';
 import { getTransactionById } from '@/services/transaction.service';
-import { ParamsProps } from '@/types';
+import { ParamsProps } from '@/types/_index';
 
 const ORDER_STATUS = {
   pending: <OrderSubmitted />,

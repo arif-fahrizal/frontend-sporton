@@ -3,7 +3,7 @@
 import Button from '@/app/(landing)/_components/UI/Button';
 import CardWithHeader from '@/app/(landing)/_components/UI/Cards/CardWithHeader';
 import { useCartStore } from '@/hooks/useCartStore';
-import { getImageUrl } from '@/lib/api';
+import { getImageUrl } from '@/lib/api.client';
 import { formatRupiah } from '@/utils/currency.utils';
 import Image from 'next/image';
 import { FiCreditCard, FiTrash2 } from 'react-icons/fi';

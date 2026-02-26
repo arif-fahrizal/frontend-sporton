@@ -1,6 +1,6 @@
 'use server';
 
-import { fetchAPI } from '@/lib/api';
+import { fetchAPI } from '@/lib/api.client';
 import { LoginCredentials, User } from '@/types/auth.types';
 import { cookies } from 'next/headers';
 

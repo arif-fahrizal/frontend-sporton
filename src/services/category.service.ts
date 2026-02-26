@@ -1,14 +1,18 @@
-import { fetchAPI, getAuthHeaders } from '@/lib/api';
+import { fetchAPI, getAuthHeaders } from '@/lib/api.client';
 import { Category } from '@/types/categories.types';
 
 export const getAllCategories = async (): Promise<Category[]> => {
   const response = await fetchAPI<Category[]>('/categories');
+
+  if (!response.data) throw new Error(response.message);
 
   return response?.data;
 };
 
 export const getCategoryById = async (id: string): Promise<Category> => {
   const response = await fetchAPI<Category>(`/categories/${id}`);
+
+  if (!response.data) throw new Error(response.message);
 
   return response?.data;
 };
@@ -22,6 +26,8 @@ export const createCategory = async (data: FormData): Promise<Category> => {
     body: data,
   });
 
+  if (!response.data) throw new Error(response.message);
+
   return response?.data;
 };
 
@@ -34,6 +40,8 @@ export const updateCategory = async (id: string, data: FormData): Promise<Catego
     body: data,
   });
 
+  if (!response.data) throw new Error(response.message);
+
   return response?.data;
 };
 
@@ -44,6 +52,8 @@ export const deleteCategory = async (id: string): Promise<void> => {
       ...(await getAuthHeaders()),
     },
   });
+
+  if (!response.data) throw new Error(response.message);
 
   return response?.data;
 };

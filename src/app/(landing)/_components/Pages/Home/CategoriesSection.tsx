@@ -1,4 +1,4 @@
-import { getImageUrl } from '@/lib/api';
+import { getImageUrl } from '@/lib/api.client';
 import { Category } from '@/types/categories.types';
 import Image from 'next/image';
 import Link from 'next/link';

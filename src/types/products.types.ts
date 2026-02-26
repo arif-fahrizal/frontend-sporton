@@ -1,4 +1,4 @@
-import { MongoResponse } from '@/types';
+import { MongoResponse } from '@/types/api.types';
 import { Category } from '@/types/categories.types';
 
 export interface Product extends MongoResponse {

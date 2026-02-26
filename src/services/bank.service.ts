@@ -1,14 +1,19 @@
-import { fetchAPI, getAuthHeaders } from '@/lib/api';
+import { fetchAPI, getAuthHeaders } from '@/lib/api.client';
+import { MetaResponse } from '@/types/api.types';
 import { Bank } from '@/types/banks.types';
 
-export const getAllBanks = async (): Promise<Bank[]> => {
+export const getAllBanks = async (): Promise<{ data: Bank[]; meta: MetaResponse }> => {
   const response = await fetchAPI<Bank[]>('/banks');
 
-  return response?.data;
+  if (!response.data || !response.meta) throw new Error(response.message);
+
+  return { data: response?.data, meta: response?.meta };
 };
 
 export const getBankById = async (id: string): Promise<Bank> => {
   const response = await fetchAPI<Bank>(`/banks/${id}`);
+
+  if (!response.data) throw new Error(response.message);
 
   return response?.data;
 };
@@ -22,6 +27,8 @@ export const createBank = async (data: Partial<Bank>): Promise<Bank> => {
     body: JSON.stringify(data),
   });
 
+  if (!response.data) throw new Error(response.message);
+
   return response?.data;
 };
 
@@ -34,6 +41,8 @@ export const updateBank = async (id: string, data: Partial<Bank>): Promise<Bank>
     body: JSON.stringify(data),
   });
 
+  if (!response.data) throw new Error(response.message);
+
   return response?.data;
 };
 
@@ -44,6 +53,8 @@ export const deleteBank = async (id: string): Promise<void> => {
       ...(await getAuthHeaders()),
     },
   });
+
+  if (!response.data) throw new Error(response.message);
 
   return response?.data;
 };

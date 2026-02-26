@@ -1,11 +1,21 @@
 import { getCookies } from '@/services/auth.service';
-import { BaseResponse } from '@/types';
+import { SuccessResponse } from '@/types/api.types';
 
-export async function fetchAPI<T>(endpoint: string, options?: RequestInit): Promise<BaseResponse<T>> {
-  const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}${endpoint}`, {
-    ...options,
-    cache: options?.cache || 'no-store',
-  });
+export async function fetchAPI<T>(
+  endpoint: string,
+  options?: RequestInit & { params?: Record<string, string> }
+): Promise<SuccessResponse<T>> {
+  const url = new URL(endpoint, process.env.NEXT_PUBLIC_API_URL);
+
+  if (options?.params) {
+    Object.entries(options.params).forEach(([key, value]) => {
+      if (value !== undefined && value !== null && value !== '') {
+        url.searchParams.append(key, String(value));
+      }
+    });
+  }
+
+  const res = await fetch(url.toString(), { ...options, cache: options?.cache || 'no-store' });
 
   if (!res.ok) {
     let errorMessage = `Failed to fetch data from ${endpoint}`;

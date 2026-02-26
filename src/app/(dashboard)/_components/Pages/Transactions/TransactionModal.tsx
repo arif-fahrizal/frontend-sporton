@@ -3,7 +3,7 @@
 import Modal from '@/app/(dashboard)/_components/UI/Modal';
 import Button from '@/app/(landing)/_components/UI/Button';
 import useBoolean from '@/hooks/useBoolean';
-import { getImageUrl } from '@/lib/api';
+import { getImageUrl } from '@/lib/api.client';
 import { Transaction } from '@/types/transactions.types';
 import { formatRupiah } from '@/utils/currency.utils';
 import { formatDate } from '@/utils/date.utils';

@@ -4,7 +4,7 @@ import ImageUploadPreview from '@/app/(dashboard)/_components/UI/ImageUploadPrev
 import Modal from '@/app/(dashboard)/_components/UI/Modal';
 import Button from '@/app/(landing)/_components/UI/Button';
 import useBoolean from '@/hooks/useBoolean';
-import { getImageUrl } from '@/lib/api';
+import { getImageUrl } from '@/lib/api.client';
 import { getAllCategories } from '@/services/category.service';
 import { createProduct, updateProduct } from '@/services/product.service';
 import { Category } from '@/types/categories.types';

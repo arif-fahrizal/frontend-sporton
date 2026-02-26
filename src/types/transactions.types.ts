@@ -1,4 +1,4 @@
-import { MongoResponse } from '@/types';
+import { MongoResponse } from '@/types/api.types';
 import { Product } from '@/types/products.types';
 
 interface PurchasedItems {
