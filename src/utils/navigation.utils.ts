@@ -26,7 +26,7 @@ export const NAV_ADMIN = [
 export const NAV_HEADER = [
   {
     label: 'Home',
-    href: '#',
+    href: '/',
   },
   {
     label: 'Category',
@@ -34,14 +34,14 @@ export const NAV_HEADER = [
   },
   {
     label: 'Explore Products',
-    href: '#',
+    href: '/explore-products',
   },
 ];
 
 export const NAV_FOOTER = [
   {
     label: 'Home',
-    href: '#',
+    href: '/',
   },
   {
     label: 'Category',
@@ -49,7 +49,7 @@ export const NAV_FOOTER = [
   },
   {
     label: 'Explore Products',
-    href: '#',
+    href: '/explore-products',
   },
   {
     label: 'About Us',

@@ -1,8 +1,8 @@
 import { fetchAPI, getAuthHeaders } from '@/lib/api.client';
 import { Product } from '@/types/products.types';
 
-export const getAllProducts = async (): Promise<Product[]> => {
-  const response = await fetchAPI<Product[]>('/products');
+export const getAllProducts = async (params?: Record<string, string>): Promise<Product[]> => {
+  const response = await fetchAPI<Product[]>('/products', { params });
 
   if (!response.data) throw new Error(response.message);
 

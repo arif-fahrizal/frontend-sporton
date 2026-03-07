@@ -11,7 +11,7 @@ const nextConfig: NextConfig = {
       },
       {
         protocol: 'https',
-        hostname: 'backend-sporton-production.up.railway.app',
+        hostname: 'backend-sporton.vercel.app',
         pathname: '/uploads/**',
       },
     ],

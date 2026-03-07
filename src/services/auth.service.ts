@@ -1,7 +1,7 @@
 'use server';
 
-import { fetchAPI } from '@/lib/api.client';
-import { LoginCredentials, User } from '@/types/auth.types';
+import { AuthAPI } from '@/lib/authApi.client';
+import { LoginCredentials } from '@/types/auth.types';
 import { cookies } from 'next/headers';
 
 export const getCookies = async () => {
@@ -13,7 +13,7 @@ export const getCookies = async () => {
 };
 
 export const SignIn = async (credentials: LoginCredentials) => {
-  const response = await fetchAPI<User>('/auth/signin', {
+  const response = await AuthAPI('/auth/signin', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',

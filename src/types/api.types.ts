@@ -1,3 +1,5 @@
+import { User } from '@/types/auth.types';
+
 export interface BaseResponse {
   status: number;
   success: boolean;
@@ -16,6 +18,11 @@ export interface MongoResponse {
   createdAt: string;
   updatedAt: string;
   __v: number;
+}
+
+export interface AuthResponse extends BaseResponse {
+  data: User;
+  token: string;
 }
 
 export interface SuccessResponse<T> extends BaseResponse {

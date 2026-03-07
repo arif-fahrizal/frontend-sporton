@@ -1,4 +1,4 @@
-import { MongoResponse } from '@/types/_index';
+import { MongoResponse } from '@/types/api.types';
 
 export interface LoginCredentials {
   email: string;
