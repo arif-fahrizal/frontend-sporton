@@ -22,8 +22,8 @@ export default function BankInformationsPage() {
 
   const fetchBanks = async () => {
     try {
-      const data = await getAllBanks();
-      if (data) setBanks(data);
+      const bankData = await getAllBanks();
+      if (bankData) setBanks(bankData.data);
     } catch (error) {
       console.error('Error fetching banks:', error);
     }
