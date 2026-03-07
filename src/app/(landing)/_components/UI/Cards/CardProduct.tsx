@@ -28,7 +28,14 @@ export default function CardProduct({ href = '#', product }: TCardProductProps) 
   return (
     <Link href={href} className="p-1.5 duration-300 bg-white hover:drop-shadow-xl">
       <div className="relative flex justify-center items-center w-full aspect-square bg-primary-light">
-        <Image src={getImageUrl(image)} alt={name} width={300} height={300} className="aspect-square object-contain" />
+        <Image
+          src={getImageUrl(image)}
+          alt={name}
+          width={300}
+          height={300}
+          className="aspect-square object-contain"
+          loading="lazy"
+        />
         <Button onClick={handleAddToCart} className="absolute size-6 top-2.5 right-2.5 p-1! sm:size-8 lg:size-10">
           <FiPlus size={24} />
         </Button>
@@ -36,7 +43,7 @@ export default function CardProduct({ href = '#', product }: TCardProductProps) 
       <h3 title={name} className="mt-4 mb-1.5 text-xs line-clamp-1 font-medium md:text-base lg:text-lg">
         {name}
       </h3>
-      <div className="flex flex-col justify-between gap-1.5 text-xs sm:flex-row md:mb-2.5 md:text-sm lg:text-base">
+      <div className="flex flex-col justify-between gap-1.5 text-xs md:mb-2.5 md:text-sm lg:text-base">
         <div className="max-w-[10ch] truncate text-gray-500">{category?.name}</div>
         <div className="text-primary text-right font-medium">{formatRupiah(price)}</div>
       </div>

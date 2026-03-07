@@ -7,7 +7,7 @@ export default async function PaymentOptions() {
 
   return (
     <CardWithHeader title="Payment Options">
-      {banks.map((payment, index) => (
+      {banks?.data?.map((payment, index) => (
         <div key={`payment-${index}-${payment?.bankName}`} className="flex gap-5 p-5 border-b border-gray-200">
           <div className="self-center h-fit p-4 text-blue-500 bg-blue-100">
             <FiCreditCard size={24} />

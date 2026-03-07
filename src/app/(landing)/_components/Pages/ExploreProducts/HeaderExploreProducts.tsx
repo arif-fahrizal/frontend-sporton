@@ -1,9 +1,10 @@
 'use client';
 
+import { Category } from '@/types/categories.types';
 import { useRouter, useSearchParams } from 'next/navigation';
+import { LuSearch } from 'react-icons/lu';
 
-const CATEGORIES = ['Sepatu', 'Baju', 'Celana', 'Aksesoris', 'Tas'];
-export default function HeaderExploreProducts() {
+export default function HeaderExploreProducts({ categories = [] }: { categories: Category[] }) {
   const searchParams = useSearchParams();
   const { push } = useRouter();
 
@@ -27,15 +28,17 @@ export default function HeaderExploreProducts() {
       method="GET"
       action="/explore-products"
       onSubmit={handleSubmit}
-      className="w-full px-4 py-3 border-b border-gray-100 bg-white"
+      className="w-full pb-5 border-b border-gray-100 bg-white"
     >
       <div className="relative mb-3">
-        <span className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 text-sm">🔍</span>
+        <span className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 text-sm">
+          <LuSearch />
+        </span>
         <input
           type="text"
           name="search"
           defaultValue={searchParams.get('search') || ''}
-          onClick={({ currentTarget }) => currentTarget.form?.requestSubmit()}
+          onKeyDown={({ key, currentTarget }) => key === 'Enter' && currentTarget.form?.requestSubmit()}
           placeholder="Cari produk..."
           className="w-full pl-9 pr-4 py-2 text-sm border border-gray-200 rounded-lg focus:outline-none focus:border-blue-400 bg-gray-50"
         />
@@ -49,9 +52,9 @@ export default function HeaderExploreProducts() {
           className="px-3 py-1.5 text-sm text-gray-600 rounded-lg border border-gray-200 bg-gray-50 focus:outline-none focus:border-blue-400"
         >
           <option value="">Semua Kategori</option>
-          {CATEGORIES.map(c => (
-            <option key={c} defaultValue={c}>
-              {c}
+          {categories.map(category => (
+            <option key={`explore-product-category-${category.name}`} value={category._id} defaultValue={category._id}>
+              {category.name}
             </option>
           ))}
         </select>
@@ -70,7 +73,7 @@ export default function HeaderExploreProducts() {
           type="number"
           name="minPrice"
           defaultValue={searchParams.get('minPrice') || ''}
-          onClick={({ currentTarget }) => currentTarget.form?.requestSubmit()}
+          onKeyDown={({ key, currentTarget }) => key === 'Enter' && currentTarget.form?.requestSubmit()}
           placeholder="Harga min"
           className="w-28 px-3 py-1.5 text-sm text-gray-600 rounded-lg border border-gray-200 bg-gray-50 focus:outline-none focus:border-blue-400"
         />
@@ -79,7 +82,7 @@ export default function HeaderExploreProducts() {
           type="number"
           name="maxPrice"
           defaultValue={searchParams.get('maxPrice') || ''}
-          onClick={({ currentTarget }) => currentTarget.form?.requestSubmit()}
+          onKeyDown={({ key, currentTarget }) => key === 'Enter' && currentTarget.form?.requestSubmit()}
           placeholder="Harga maks"
           className="w-28 px-3 py-1.5 text-sm text-gray-600 rounded-lg border border-gray-200 bg-gray-50 focus:outline-none focus:border-blue-400"
         />
