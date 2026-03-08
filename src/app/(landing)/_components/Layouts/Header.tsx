@@ -6,10 +6,12 @@ import { useCartStore } from '@/hooks/useCartStore';
 import { NAV_HEADER } from '@/utils/navigation.utils';
 import Image from 'next/image';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import { Activity } from 'react';
 import { FiMenu, FiSearch, FiShoppingBag, FiX } from 'react-icons/fi';
 
 export default function Header() {
+  const pathname = usePathname();
   const { items } = useCartStore();
   const isMenuOpen = useBoolean();
   const isCartOpen = useBoolean();
@@ -34,7 +36,7 @@ export default function Header() {
                 key={`desktop-navigation-${index}`}
                 href={item.href}
                 className={
-                  index === 0
+                  item.href === pathname
                     ? "relative after:content-[''] after:absolute after:block after:w-1/2 after:h-1 after:left-1/2 after:-translate-x-1/2 after:translate-y-1 after:rounded-full after:bg-primary hover:text-primary transition-colors"
                     : ''
                 }

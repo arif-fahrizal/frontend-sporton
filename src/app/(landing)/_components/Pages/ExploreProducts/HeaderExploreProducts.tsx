@@ -31,7 +31,7 @@ export default function HeaderExploreProducts({ categories = [] }: { categories:
       className="w-full pb-5 border-b border-gray-100 bg-white"
     >
       <div className="relative mb-3">
-        <span className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 text-sm">
+        <span className="absolute left-3 top-1/2 -translate-y-1/2 text-sm text-gray-400">
           <LuSearch />
         </span>
         <input
@@ -40,7 +40,7 @@ export default function HeaderExploreProducts({ categories = [] }: { categories:
           defaultValue={searchParams.get('search') || ''}
           onKeyDown={({ key, currentTarget }) => key === 'Enter' && currentTarget.form?.requestSubmit()}
           placeholder="Cari produk..."
-          className="w-full pl-9 pr-4 py-2 text-sm border border-gray-200 rounded-lg focus:outline-none focus:border-blue-400 bg-gray-50"
+          className="w-full pl-9 pr-4 py-2 text-sm rounded-lg border outline-none border-gray-200 duration-300 bg-gray-50 focus:border-primary"
         />
       </div>
 
@@ -49,7 +49,7 @@ export default function HeaderExploreProducts({ categories = [] }: { categories:
           name="category"
           defaultValue={searchParams.get('category') || ''}
           onChange={({ target }) => target.form?.requestSubmit()}
-          className="px-3 py-1.5 text-sm text-gray-600 rounded-lg border border-gray-200 bg-gray-50 focus:outline-none focus:border-blue-400"
+          className="px-3 py-1.5 text-sm text-gray-600 rounded-lg border outline-none border-gray-200 duration-300 bg-gray-50 focus:border-primary"
         >
           <option value="">Semua Kategori</option>
           {categories.map(category => (
@@ -67,7 +67,7 @@ export default function HeaderExploreProducts({ categories = [] }: { categories:
           name="sort"
           defaultValue={searchParams.get('sort') || 'desc'}
           onChange={({ target }) => target.form?.requestSubmit()}
-          className="px-3 py-1.5 text-sm text-gray-600 rounded-lg border border-gray-200 bg-gray-50 focus:outline-none focus:border-blue-400"
+          className="px-3 py-1.5 text-sm text-gray-600 rounded-lg border outline-none border-gray-200 duration-300 bg-gray-50 focus:border-primary"
         >
           <option value="desc">Terbaru</option>
           <option value="asc">Terlama</option>
@@ -79,7 +79,7 @@ export default function HeaderExploreProducts({ categories = [] }: { categories:
           defaultValue={searchParams.get('minPrice') || ''}
           onKeyDown={({ key, currentTarget }) => key === 'Enter' && currentTarget.form?.requestSubmit()}
           placeholder="Harga min"
-          className="w-28 px-3 py-1.5 text-sm text-gray-600 rounded-lg border border-gray-200 bg-gray-50 focus:outline-none focus:border-blue-400"
+          className="w-28 px-3 py-1.5 text-sm text-gray-600 rounded-lg border outline-none border-gray-200 duration-300 bg-gray-50 focus:border-primary"
         />
 
         <input
@@ -88,7 +88,7 @@ export default function HeaderExploreProducts({ categories = [] }: { categories:
           defaultValue={searchParams.get('maxPrice') || ''}
           onKeyDown={({ key, currentTarget }) => key === 'Enter' && currentTarget.form?.requestSubmit()}
           placeholder="Harga maks"
-          className="w-28 px-3 py-1.5 text-sm text-gray-600 rounded-lg border border-gray-200 bg-gray-50 focus:outline-none focus:border-blue-400"
+          className="w-28 px-3 py-1.5 text-sm text-gray-600 rounded-lg border outline-none border-gray-200 duration-300 bg-gray-50 focus:border-primary"
         />
 
         <label className="flex items-center gap-1.5 text-sm text-gray-600 cursor-pointer select-none">
