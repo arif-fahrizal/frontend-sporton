@@ -4,7 +4,7 @@ import { Product } from '@/types/products.types';
 export const getAllProducts = async (params?: Record<string, string>): Promise<Product[]> => {
   const response = await fetchAPI<Product[]>('/products', { params });
 
-  if (!response.data) throw new Error(response.message);
+  if (!response.data) return [];
 
   return response?.data;
 };
@@ -12,7 +12,7 @@ export const getAllProducts = async (params?: Record<string, string>): Promise<P
 export const getProductById = async (id: string): Promise<Product> => {
   const response = await fetchAPI<Product>(`/products/${id}`);
 
-  if (!response.data) throw new Error(response.message);
+  if (!response.data) return {} as Product;
 
   return response?.data;
 };
@@ -26,7 +26,7 @@ export const createProduct = async (data: FormData): Promise<Product> => {
     body: data,
   });
 
-  if (!response.data) throw new Error(response.message);
+  if (!response.data) return {} as Product;
 
   return response?.data;
 };
@@ -40,7 +40,7 @@ export const updateProduct = async (id: string, data: FormData): Promise<Product
     body: data,
   });
 
-  if (!response.data) throw new Error(response.message);
+  if (!response.data) return {} as Product;
 
   return response?.data;
 };
@@ -52,7 +52,7 @@ export const deleteProduct = async (id: string): Promise<void> => {
     },
   });
 
-  if (!response.data) throw new Error(response.message);
+  if (!response.data) return;
 
   return response?.data;
 };

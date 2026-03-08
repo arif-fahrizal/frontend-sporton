@@ -40,7 +40,13 @@ export async function fetchAPI<T>(
       console.error(error);
     }
 
-    throw new Error(errorMessage);
+    console.error(errorMessage);
+
+    return {
+      status: res.status,
+      success: false,
+      message: errorMessage,
+    };
   }
 
   return res.json();

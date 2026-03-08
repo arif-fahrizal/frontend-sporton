@@ -4,7 +4,7 @@ import { Category } from '@/types/categories.types';
 export const getAllCategories = async (): Promise<Category[]> => {
   const response = await fetchAPI<Category[]>('/categories');
 
-  if (!response.data) throw new Error(response.message);
+  if (!response.data) return [];
 
   return response?.data;
 };
@@ -12,7 +12,7 @@ export const getAllCategories = async (): Promise<Category[]> => {
 export const getCategoryById = async (id: string): Promise<Category> => {
   const response = await fetchAPI<Category>(`/categories/${id}`);
 
-  if (!response.data) throw new Error(response.message);
+  if (!response.data) return {} as Category;
 
   return response?.data;
 };
@@ -26,7 +26,7 @@ export const createCategory = async (data: FormData): Promise<Category> => {
     body: data,
   });
 
-  if (!response.data) throw new Error(response.message);
+  if (!response.data) return {} as Category;
 
   return response?.data;
 };
@@ -40,7 +40,7 @@ export const updateCategory = async (id: string, data: FormData): Promise<Catego
     body: data,
   });
 
-  if (!response.data) throw new Error(response.message);
+  if (!response.data) return {} as Category;
 
   return response?.data;
 };
@@ -53,7 +53,7 @@ export const deleteCategory = async (id: string): Promise<void> => {
     },
   });
 
-  if (!response.data) throw new Error(response.message);
+  if (!response.data) return;
 
   return response?.data;
 };

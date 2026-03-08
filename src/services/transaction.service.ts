@@ -8,7 +8,7 @@ export const getAllTransactions = async (): Promise<Transaction[]> => {
     },
   });
 
-  if (!response.data) throw new Error(response.message);
+  if (!response.data) return [];
 
   return response?.data;
 };
@@ -16,7 +16,7 @@ export const getAllTransactions = async (): Promise<Transaction[]> => {
 export const getTransactionById = async (id: string): Promise<Transaction> => {
   const response = await fetchAPI<Transaction>(`/transactions/${id}`);
 
-  if (!response.data) throw new Error(response.message);
+  if (!response.data) return {} as Transaction;
 
   return response?.data;
 };
@@ -30,7 +30,7 @@ export const createTransaction = async (data: FormData): Promise<Transaction> =>
     body: data,
   });
 
-  if (!response.data) throw new Error(response.message);
+  if (!response.data) return {} as Transaction;
 
   return response?.data;
 };
@@ -41,7 +41,7 @@ export const transactionCheckout = async (data: FormData): Promise<Transaction> 
     body: data,
   });
 
-  if (!response.data) throw new Error(response.message);
+  if (!response.data) return {} as Transaction;
 
   return response?.data;
 };
@@ -55,7 +55,7 @@ export const updateTransaction = async (id: string, data: FormData): Promise<Tra
     body: data,
   });
 
-  if (!response.data) throw new Error(response.message);
+  if (!response.data) return {} as Transaction;
 
   return response?.data;
 };
@@ -68,7 +68,7 @@ export const deleteTransaction = async (id: string): Promise<void> => {
     },
   });
 
-  if (!response.data) throw new Error(response.message);
+  if (!response.data) return;
 
   return response?.data;
 };
