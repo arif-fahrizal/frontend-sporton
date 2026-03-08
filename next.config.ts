@@ -3,7 +3,7 @@ import path from 'path';
 
 const nextConfig: NextConfig = {
   /* config options here */
-  outputFileTracingRoot: path.join(__dirname, '../'),
+  outputFileTracingRoot: process.env.NODE_ENV === 'production' ? undefined : path.join(__dirname, '../'),
   images: {
     remotePatterns: [
       {
