@@ -53,7 +53,11 @@ export default function HeaderExploreProducts({ categories = [] }: { categories:
         >
           <option value="">Semua Kategori</option>
           {categories.map(category => (
-            <option key={`explore-product-category-${category.name}`} value={category._id} defaultValue={category._id}>
+            <option
+              key={`explore-product-category-${category.name}`}
+              value={category.name}
+              defaultValue={category.name}
+            >
               {category.name}
             </option>
           ))}
